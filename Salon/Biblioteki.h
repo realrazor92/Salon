@@ -1,0 +1,10 @@
+#include <iostream>
+#include <conio.h>
+#include <string>
+#include <vector>
+#include <fstream>
+#include <sstream>
+#include <iomanip>
+#include <ostream>
+#include <locale.h>		
+#include <cctype>
