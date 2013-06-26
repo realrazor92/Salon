@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BlednaWartosc" Collapsed="true">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BlednaWartosc.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Data" Collapsed="true">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAgAAAAAAAAAAAAAAAAAAAhAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Klient" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAQAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>Klient.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Manager" Collapsed="true">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQEABAAAAAAAAACAAQA=</HashCode>
+      <FileName>Manager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Osoba" Collapsed="true">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAIAAAAAAAAAAAAAAAQAAACAIAAAAAAABAAA=</HashCode>
+      <FileName>Osoba.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pracownik" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAAAAAAQAAAAAAAABAAACAAQA=</HashCode>
+      <FileName>Pracownik.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prezes" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAAAAAAAAAAAQAAAAAAAAAAAACAAQA=</HashCode>
+      <FileName>Prezes.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Salon" Collapsed="true">
+    <Position X="13.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAADgAhAAAAAAABAAIAAAQIAAAAAQBgAACBA=</HashCode>
+      <FileName>Salon.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Samochod" Collapsed="true">
+    <Position X="9.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAECAAAAAAAAAKAAAAAgAAAAAAAAAIAEgAAAAAAAA=</HashCode>
+      <FileName>Samochod.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UjemnaWartosc" Collapsed="true">
+    <Position X="11.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UjemnaWartosc.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Typ" Collapsed="true">
+    <Position X="11.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAACAAAAAAABAgAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Samochod.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Rodzaj" Collapsed="true">
+    <Position X="9.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIIAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Samochod.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
