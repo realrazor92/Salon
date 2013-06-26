@@ -134,22 +134,17 @@ void Menu::Interfejs()
 					{
 					case '1':		//Bud¿et
 						{
-						/*
 							char k;
 							do
 							{
 								k=Budzet();
 								switch(k)
 								{
-								case '1':		//Bud¿et
+								case '1':		//Przychody
 									{
 										break;
 									}
-								case '2':		//Pracownicy
-									{
-										break;
-									}
-								case '3':		//Zestawienia sprzeda¿y
+								case '2':		//Rozchody
 									{
 										break;
 									}
@@ -158,24 +153,50 @@ void Menu::Interfejs()
 										std::cout<<"Blêdna opcja. Spróbuj jeszcze raz.\n";
 									}
 								}
-							}
-							*/
-						break;	
-						}
-						
 
-								
-					
-						
-					
+							}
+							while(k!='0');
+							system("cls");
+							break;
+
+						}
 					case '2':		//Pracownicy
 						{
+							std::cout<<"Info o pracownikach...\n";
 							break;
 						}
 					case '3':		//Zestawienia sprzeda¿y
 						{
 
+							char k;
+							do
+							{
+								k=Zestawienia();
+								switch(k)
+								{
+								case '1':		//Zestawienie miesiêczne
+									{
+										break;
+									}
+								case '2':		//Zestawienie ogólne
+									{
+										break;
+									}
+								case '3':		//Zestawienie pracownika
+									{
+										break;
+									}
+								default:
+									{
+										std::cout<<"Blêdna opcja. Spróbuj jeszcze raz.\n";
+									}
+								}
+
+							}
+							while(k!='0');
+							system("cls");
 							break;
+
 						}
 					case '4':		//Dostawa samochodów
 						{
@@ -214,8 +235,8 @@ void Menu::Interfejs()
 		default:
 			{
 				std::cout<<"Blêdna opcja. Spróbuj jeszcze raz.\n\n";
-				system("PAUSE");
-				system("cls");
+				//system("PAUSE");
+				//system("cls");
 			}
 		}
 	}
