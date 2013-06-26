@@ -65,19 +65,6 @@ void Menu::Interfejs()
 					case '1':		//Wyswietl baze aktualnie dostêpnych samochodów
 						{
 							nowy.WyswietlBazeSamochodow();
-							/*
-							std::cout<<"---Baza aktualnie dostêpnych samochodów---\n\n";	//Formatowanie dorobie póŸniej
-							std::cout<<"    Marka    "<<"|"<<"     Model    "<<"|"<<" Nadwozie "<<"|"<<" Napêd "<<"|"<<" Masa "<<"|"
-								<<"Masa dop"<<"|"<<"    Cena"<<std::endl;
-							std::cout<<"============================================================================="<<std::endl;
-							for(int i=0; i<nowy.BazaSamochodow_Size();++i)
-							{
-								std::cout<<nowy.BazaSamochodow_Get(i)<<std::endl;
-							}
-							std::cout<<std::endl;
-							*/
-
-
 							break;
 						}
 					case '2':		//Dostawa samochodów
@@ -92,11 +79,11 @@ void Menu::Interfejs()
 								std::cout<<"Pomyœlnie dodano bazê samochodów.\n";
 							}
 							else
+							{
 								std::cout<<"Wyst¹pi³ b³¹d dodawania bazy danych.\n";
-
+							}	
 							nowy.ZapiszBazeSamochodow();
-
-								break;
+							break;
 						}
 					case '3':
 						{

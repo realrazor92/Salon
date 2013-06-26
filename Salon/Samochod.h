@@ -27,14 +27,13 @@ class Samochod
 {
 private:
 	//proponowa³bym zrobic enum, ktory bedzie obs³ugiwa³ rodzaj napêdu, na przód, na ty³ i 4x4
-	std::string Marka;
-	std::string Model;
-	Rodzaj Naped;
-	Typ Nadwozie;
 	double MasaPojazdu;
 	double MasaDopuszczalna;
 	double Cena;
-
+	std::string Marka;
+	std::string Model;
+	Rodzaj Naped;
+	Typ Nadwozie;	//Myœle, ¿e nie ma sensu robiæ osobnych klas dla ka¿dego typu nadwozia dlatego zrobi³em tak.
 public:
 	Samochod(const double masaPojazdu=0 , const double masaDopuszczalna=0 , const double cena=0 , const std::string marka=" ", const std::string model=" ", const Rodzaj naped=Przód, const Typ nadwozie=Hatchback);
 	friend std::ostream & operator <<(std::ostream &Strumien, const Samochod &S);

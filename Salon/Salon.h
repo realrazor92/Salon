@@ -6,6 +6,7 @@
 #include "Prezes.h"
 #include "Samochod.h"
 #include "Pracownik.h"
+#include <map>
 
 class Salon
 {
@@ -16,14 +17,16 @@ private:
 	double Przychody;
 	double Rozchody;	
 	std::string NazwaMarki;
-	std::vector<Samochod> BazaSamochodow;	
+	std::vector<Samochod> BazaSamochodow;
+	std::vector<Samochod> SprzedaneSamochody;
+
 
 public:
 	Salon(const std::string imie, const std::string nazwisko , const std::string telefon, const double wynagrodzenie, const unsigned short int czas , const std::string nazwa , const double budzet , const double przychody , const double rozchody);
 	void SprzedajSamochod();
-	void ZatrudnijPracownika(const Pracownik &P);
+	void ZatrudnijPracownika(const Pracownik &P); //ZROBIONE
 	void WyplacWynagrodzenie();
-	void ObliczBudzet();
+	double PokazBudzet(); //ZROBIONE
 	bool DostawaSamochodow(std::string nazwa);// tu proponuje zrobic baze samochodow wczytana z pliku lub czegos, aby mozna by³o 
 											  //sprzedawaæ samochody, tak ¿eby by³o to dosyæ wiarygodnie opracowane.
 	int BazaSamochodow_Size() {return BazaSamochodow.size();}
