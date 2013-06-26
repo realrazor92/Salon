@@ -29,8 +29,9 @@ std::ostream & operator <<(std::ostream &Strumien, const Pracownik &P)
 
 	for(int i = 0 ; i < P.SprzedaneSamochody.size() ; ++i)
 	{
-	Strumien<<P.SprzedaneSamochody[i];
+		Strumien<<P.SprzedaneSamochody[i];
 	}
+
 	Strumien<<std::endl; 
 	return Strumien;
 }
