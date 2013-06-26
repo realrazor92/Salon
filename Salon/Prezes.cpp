@@ -9,7 +9,12 @@ Prezes::Prezes(const std::string imie, const std::string nazwisko , const std::s
 	}
 
 }
-
+double Prezes::NalezneWynagrodzenie()
+{
+	unsigned short int StawkaGodzinowa = 15;
+	Wynagrodzenie += CzasPracy * StawkaGodzinowa;
+	return Wynagrodzenie;
+}
 std::ostream & operator <<(std::ostream &Strumien, const Prezes &P)
 {
 	Strumien <<P.Imie<<" "<<P.Nazwisko<<" "<<P.Dataur<< " "<<P.Telefon <<" "<< P.CzasPracy <<" "<<P.Wynagrodzenie<<std::endl; 

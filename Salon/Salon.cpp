@@ -2,9 +2,9 @@
 
 extern Salon nowy;
 
-Salon::Salon(const std::string imie, const std::string nazwisko, const std::string telefon, const double wynagrodzenie, const unsigned short czas,
+Salon::Salon(const std::string imie, const std::string nazwisko, const std::string telefon, const unsigned short czas,
 			 const std::string nazwa, const double budzet, const double przychody, const double rozchody)
-			 :PrezesSalonu(imie , nazwisko , telefon , wynagrodzenie , czas), NazwaMarki(nazwa) , Budzet(budzet) , Przychody(przychody) , Rozchody(rozchody)
+			 :PrezesSalonu(imie , nazwisko , telefon ,(przychody*0,1) , czas), NazwaMarki(nazwa) , Budzet(budzet) , Przychody(przychody) , Rozchody(rozchody)
 {
 
 }
