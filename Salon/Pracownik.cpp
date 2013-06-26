@@ -6,12 +6,33 @@ Pracownik::Pracownik(const std::string imie, const std::string nazwisko, const s
 
 }
 
-std::ostream & operator <<(std::ostream &Strumien, const Pracownik &P)
-{
-	Strumien <<P.Imie<<" "<<P.Nazwisko<<" "<<P.Dataur<< " "<<P.Telefon <<" "<< P.CzasPracy <<" "<<P.SprzedaneSamochody<<std::endl; 
-	return Strumien;
-}
 double Pracownik::NalezneWynagrodzenie()
 {
-	return 1;
+	double SumaSprzedazy = 0;
+	unsigned short int StawkaGodzinna = 10;
+	double PremiaZaSprzedaz = 0.01;
+
+	for(int i = 0 ; i < SprzedaneSamochody.size(); ++i)
+	{
+		SumaSprzedazy += SprzedaneSamochody[i].getCena();
+	}
+
+	return (CzasPracy * StawkaGodzinna) + (SumaSprzedazy * PremiaZaSprzedaz);
 }
+void Pracownik::SprzedajSamochod(Samochod &S)
+{
+	SprzedaneSamochody.push_back(S);
+}
+std::ostream & operator <<(std::ostream &Strumien, const Pracownik &P)
+{
+	Strumien <<P.Imie<<" "<<P.Nazwisko<<" "<<P.Dataur<< " "<<P.Telefon <<" "<< P.CzasPracy;
+
+	for(int i = 0 ; i < P.SprzedaneSamochody.size() ; ++i)
+	{
+		Strumien<<P.SprzedaneSamochody[i];
+	}
+
+	Strumien<<std::endl; 
+	return Strumien;
+}
+
