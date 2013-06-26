@@ -5,6 +5,7 @@
 class Osoba
 {
 protected:
+	//trzeba jeszcze dorobic klase data
 	std::string Imie;
 	std::string Nazwisko;
 	std::string Telefon;

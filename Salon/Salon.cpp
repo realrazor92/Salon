@@ -9,20 +9,25 @@ Salon::Salon(const std::string imie, const std::string nazwisko, const std::stri
 
 }
 
-void Salon::ObliczBudzet()
+double Salon::PokazBudzet()
 {
+	Budzet = Przychody + Rozchody;
+	return Budzet;
 }
 
 void Salon::WyplacWynagrodzenie()
 {
+
 }
 
 void Salon::SprzedajSamochod()
 {
+
 }
 
 void Salon::ZatrudnijPracownika(const Pracownik &P)
 {
+	Personel.push_back(new Pracownik(P));
 }
 
 void SprawdzPrzecinki(std::string &buff, std::istringstream &linestream)	//Sprawdza wystêpowanie przecinków w nazwie
@@ -31,7 +36,7 @@ void SprawdzPrzecinki(std::string &buff, std::istringstream &linestream)	//Spraw
 	{
 		std::string temp;
 		getline(linestream,temp,',');	//Pobiera nastêpny kawa³ek linii do przecinka
-		if(temp[0]=='"')				//Sprawdza czy pierwszy znak pobranego nastêpnego kawa³ka linni jest ". W ten sposób wy³apuje przypadku typu: ",".
+		if(temp[0]=='"')	//Sprawdza czy pierwszy znak pobranego nastêpnego kawa³ka linni jest ". W ten sposób wy³apuje przypadku typu: ",".
 		{
 			buff.erase(buff.length()-1);	//Usuwa " z pierwszego kawa³ka
 			temp.erase(0,1);				//Usuwa " z drugiego kawa³ka
@@ -81,7 +86,7 @@ bool Salon::DostawaSamochodow(std::string nazwa)	//Tu trzeba dorobiæ obs³ugê b³ê
 
 					if(naped=="Przód")Naped=Przód;
 					if(naped=="Ty³")Naped=Ty³;
-					if(naped=="4x4")Naped=Obie_osie;
+					if(naped=="Obie_osie")Naped=Obie_osie;
 
 					if(nadwozie=="Hatchback")Nadwozie=Hatchback;
 					if(nadwozie=="Sedan")Nadwozie=Sedan;
@@ -106,7 +111,7 @@ void Salon::ZapiszBazeSamochodow()
 {
 	std::ofstream Plik("auta.csv");
 	for(int i=0 ; i<BazaSamochodow.size(); i++)
-		Plik<<BazaSamochodow[i]<<"\n";    
+		Plik<<BazaSamochodow[i]<<"\n";   
 }
 
 void Salon::WyswietlBazeSamochodow()

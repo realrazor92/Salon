@@ -32,7 +32,7 @@ std::ostream & operator <<(std::ostream &Strumien, const Typ &T)
 std::ostream & operator <<(std::ostream &Strumien, const Rodzaj &R)
 {
 	if(R==Przód) Strumien<<"Przód";
-	if(R==Ty³) Strumien<<"Ty³";
+	if(R==Sedan) Strumien<<"Ty³";
 	if(R==Obie_osie) Strumien<<"4x4";	//Obie_osie
 	return Strumien;
 }
@@ -67,16 +67,3 @@ std::ostream & operator <<(std::ostream &Strumien, const Samochod &S)
 
 	return Strumien;
 }
-/*
-std::ostream & operator <<(std::ostream &Strumien, const Samochod &S)
-{
-Strumien<<std::setw(13)<<S.Marka<<", "												//Marka
-<<std::setw(13)<<S.Model<<", "												//Model
-<<std::setw(9)<<S.Nadwozie<<", "											//Nadwozie
-<<std::setw(6)<<S.Naped<<", "												//Naped
-<<std::setw(5)<<std::fixed<<std::setprecision(0)<<S.MasaPojazdu<<", "		//Masa
-<<std::setw(7)<<std::fixed<<std::setprecision(0)<<S.MasaDopuszczalna<<", "	//Masa dopuszczalna
-<<std::setw(7)<<std::fixed<<std::setprecision(2)<<S.Cena<<" zl";			//Cena
-return Strumien;
-}
-*/
