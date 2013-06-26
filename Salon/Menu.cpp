@@ -14,9 +14,8 @@ const char Menu::Glowne()
 {
 	char k;
 	std::cout << "\n    MENU G£ÓWNE \n" 
-		"[1] Aktualnie dostêpne modele\n"		
-		"[2] Opcja 2\n"
-		"[3] Opcja 3\n\n"
+		"[1] Klient\n"//Aktualnie dostêpne modele\n"		
+		"[2] Salon\n\n"
 		"[0] Zakoñcz program\n"			
 		"\nWybierz: ";
 	std::cin >> k;
@@ -24,13 +23,12 @@ const char Menu::Glowne()
 	return k;
 }
 
-const char Menu::Podmenu1()
+const char Menu::Klient()
 {
 	char k;
-	std::cout << "    AKTUALNIE DOSTÊPNE MODELE \n\n" 
-		"[1] Wyœwietl bazê aktualnie dostêpnych samochodów\n"		
-		"[2] Dostawa samochodów\n"
-		"[3] \n"
+	std::cout << "    MENU KLIENTA \n\n" 
+		"[1] Baza aktualnie dostêpnych samochodów\n"		
+		"[2] Zakup samochodu\n\n"
 		"[0] Powrót do menu g³ównego\n"			
 		"\nWybierz: ";
 	std::cin >> k;
@@ -38,6 +36,50 @@ const char Menu::Podmenu1()
 	return k;
 }
 
+const char Menu::Salon()
+{
+	char k;
+	std::cout << "    MENU SALONU \n\n" 
+		"[1] Bud¿et\n"		
+		"[2] Pracownicy\n"
+		"[3] Zestawienia sprzeda¿y\n"
+		"[4] Dostawa samochodów\n\n"
+
+		"[0] Powrót do menu g³ównego\n"			
+		"\nWybierz: ";
+	std::cin >> k;
+	system("cls");
+	return k;
+}
+
+const char Menu::Budzet()
+{
+	char k;
+	std::cout << "    MENU BUD¯ETU \n\n" 
+		"[1] Przychody\n"		
+		"[2] Rozchody\n\n"
+
+		"[0] Powrót do menu g³ównego\n"			
+		"\nWybierz: ";
+	std::cin >> k;
+	system("cls");
+	return k;
+}
+
+const char Menu::Zestawienia()
+{
+	char k;
+	std::cout << "    MENU ZESTAWIEÑ \n\n" 
+		"[1] Zestawienie miesiêczne\n"		
+		"[2] Zestawienie ogólne\n"
+		"[3] Zestawienie pracownika\n\n"
+
+		"[0] Powrót do menu g³ównego\n"			
+		"\nWybierz: ";
+	std::cin >> k;
+	system("cls");
+	return k;
+}
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void Menu::Interfejs()
@@ -54,12 +96,12 @@ void Menu::Interfejs()
 		k=Glowne();
 		switch(k)
 		{
-		case '1':	//Aktualnie dostêpne modele
+		case '1':	//Klient
 			{
 				char k;
 				do
 				{
-					k=Podmenu1();
+					k=Klient();
 					switch(k)
 					{
 					case '1':		//Wyswietl baze aktualnie dostêpnych samochodów
@@ -67,7 +109,75 @@ void Menu::Interfejs()
 							nowy.WyswietlBazeSamochodow();
 							break;
 						}
-					case '2':		//Dostawa samochodów
+					case '2':		//Zakup samochodu
+						{
+							break;
+						}
+					default:
+						{
+							std::cout<<"Blêdna opcja. Spróbuj jeszcze raz.\n";
+						}
+					}
+
+				}
+				while(k!='0');
+				system("cls");
+				break;
+			}
+		case '2':	//Salon
+			{
+				char k;
+				do
+				{
+					k=Salon();
+					switch(k)
+					{
+					case '1':		//Bud¿et
+						{
+						/*
+							char k;
+							do
+							{
+								k=Budzet();
+								switch(k)
+								{
+								case '1':		//Bud¿et
+									{
+										break;
+									}
+								case '2':		//Pracownicy
+									{
+										break;
+									}
+								case '3':		//Zestawienia sprzeda¿y
+									{
+										break;
+									}
+								default:
+									{
+										std::cout<<"Blêdna opcja. Spróbuj jeszcze raz.\n";
+									}
+								}
+							}
+							*/
+						break;	
+						}
+						
+
+								
+					
+						
+					
+					case '2':		//Pracownicy
+						{
+							break;
+						}
+					case '3':		//Zestawienia sprzeda¿y
+						{
+
+							break;
+						}
+					case '4':		//Dostawa samochodów
 						{
 							std::cout<<"------------Dostawa samochodów------------\n\n";
 							std::cout<<"WprowadŸ nazwê pliku z baz¹ samochodów: ";
@@ -85,11 +195,7 @@ void Menu::Interfejs()
 							nowy.ZapiszBazeSamochodow();
 							break;
 						}
-					case '3':
-						{
-							std::cout<<"Wybrales 3.\n";
-							break;
-						}
+
 					default:
 						{
 							std::cout<<"Blêdna opcja. Spróbuj jeszcze raz.\n";
@@ -98,20 +204,6 @@ void Menu::Interfejs()
 
 				}
 				while(k!='0');
-				system("cls");
-				break;
-			}
-		case '2':
-			{
-				std::cout<<"Opcja 2\n";
-				system("PAUSE");
-				system("cls");
-				break;
-			}
-		case '3':
-			{
-				std::cout<<"Opcja 3\n";
-				system("PAUSE");
 				system("cls");
 				break;
 			}
