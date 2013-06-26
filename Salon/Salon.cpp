@@ -17,12 +17,12 @@ double Salon::PokazBudzet()
 
 void Salon::WyplacWynagrodzenie()
 {
-
+	
 }
 
 void Salon::SprzedajSamochod()
 {
-
+	
 }
 
 void Salon::ZatrudnijPracownika(const Pracownik &P)
