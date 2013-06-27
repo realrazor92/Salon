@@ -1,9 +1,9 @@
 #include "Pracownik.h"
 
 Pracownik::Pracownik(const std::string imie, const std::string nazwisko, const std::string telefon, const unsigned short int dzien,
-		const unsigned short int miesiac, const unsigned short int rok, const unsigned short int id, const unsigned short int czas
-		/*, const unsigned int sprzedane*/)
-:Osoba(imie,nazwisko,telefon,dzien,miesiac,rok), ID(id), CzasPracy(czas)/*, SprzedaneSamochody(sprzedane)*/
+					 const unsigned short int miesiac, const unsigned short int rok, const unsigned short int id, const unsigned short int czas
+					 /*, const unsigned int sprzedane*/)
+					 :Osoba(imie,nazwisko,telefon,dzien,miesiac,rok), ID(id), CzasPracy(czas)/*, SprzedaneSamochody(sprzedane)*/
 {}
 
 double Pracownik::NalezneWynagrodzenie()
@@ -39,5 +39,10 @@ std::ostream & operator <<(std::ostream &Strumien, const Pracownik &P)	//TODO: d
 
 void  Pracownik::Wyswietl()const	//TODO: Formatowanie
 {
-	std::cout<<Imie<<" "<<Nazwisko<<" "<<Dataur<<" "<<Telefon<<" "<<ID<<" "<<CzasPracy<<std::endl;
+	std::cout<<std::setw(10)<<Imie<<" "
+			 <<std::setw(10)<<Nazwisko<<" "
+			 <<std::setw(10)<<Dataur<<" "
+			 <<std::setfill(' ')<<std::setw(9)<<Telefon<<" "
+  			 <<std::setfill(' ')<<std::setw(4)<<CzasPracy<<" "
+			 <<std::setfill(' ')<<std::setw(4)<<ID<<" "<<std::endl;
 }

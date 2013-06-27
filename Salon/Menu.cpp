@@ -162,7 +162,6 @@ void Menu::Interfejs()
 						}
 					case '2':		//Pracownicy
 						{
-							nowy.ZaladujPersonel();	//To docelowo bêdzie gdzieœ na pocz¹tku menu.
 							nowy.WyswietlPersonel();
 							break;
 						}
@@ -248,6 +247,7 @@ void Menu::Interfejs()
 Menu::Menu()
 {
 	nowy.DostawaSamochodow("auta");
+	nowy.ZaladujPersonel();
 	Interfejs();
 }
 

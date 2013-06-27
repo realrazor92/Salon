@@ -122,15 +122,13 @@ void Salon::ZapiszBazeSamochodow()
 
 void Salon::WyswietlBazeSamochodow()
 {
-	std::cout<<"---Baza aktualnie dostêpnych samochodów---\n\n";
+	std::cout<<"---------------------Baza aktualnie dostêpnych samochodów---------------------\n\n";
 	std::cout<<"    Marka    "<<"|"<<"     Model    "<<"|"<<" Nadwozie "<<"|"<<" Napêd "<<"|"<<" Masa "<<"|"
 		<<"Masa dop"<<"|"<<"    Cena"<<std::endl;
-	std::cout<<"============================================================================="<<std::endl;
+	std::cout<<"=============================================================================="<<std::endl;
 
 	for(int i=0; i<nowy.BazaSamochodow_Size();++i)
 	{
-		//Skalowanie ramki powinno byæ robione na podstawie pobieranych faktycznych wartosci najdluzszego elementu dla danego typu.
-
 		std::cout<<std::setw(13)<<BazaSamochodow[i].getMarka()<<", "											//Marka
 			<<std::setw(13)<<BazaSamochodow[i].getModel()<<", "													//Model
 			<<std::setw(9)<<BazaSamochodow[i].getNadwozie()<<", "												//Nadwozie
@@ -230,6 +228,10 @@ bool Salon::ZaladujPersonel()
 
 void Salon::WyswietlPersonel()
 {
+	//system("cls");
+	std::cout<<"-----------------------------------Personel------------------------------------\n\n";
+	std::cout<<"   Imiê   "<<"|"<<" Nazwisko "<<"|"<<" Data ur. "<<"|"<<" Telefon "<<"|"<<"Czas"<<"|"<<" ID "<<"|"<<" Podw³adni "<<"|"<<" Wynagrodzenie "<<std::endl;
+	std::cout<<"==============================================================================="<<std::endl;
 	for(unsigned int i=0; i<Personel.size(); ++i)
 	{
 		Personel[i]->Wyswietl();

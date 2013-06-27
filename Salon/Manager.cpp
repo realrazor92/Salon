@@ -18,5 +18,14 @@ std::ostream & operator <<(std::ostream &Strumien, const Manager &M)
 
 void Manager::Wyswietl() const
 {
-	std::cout<<Imie<<" "<<Nazwisko<<" "<<Dataur<<" "<<Telefon<<" "<<IloscPodwladnych<<" "<<CzasPracy<<" "<<Wynagrodzenie<<std::endl;
+	std::cout<<std::setw(10)<<Imie<<" "
+			 <<std::setw(10)<<Nazwisko<<" "
+			 <<std::setw(10)<<Dataur<<" "
+			 <<std::setfill(' ')<<std::setw(9)<<Telefon<<" "
+  			 <<std::setfill(' ')<<std::setw(4)<<CzasPracy<<" "
+			 <<std::setfill(' ')<<std::setw(4)<<""<<" "
+			 <<std::setfill(' ')<<std::setw(11)<<IloscPodwladnych<<" "
+			 <<std::setfill(' ')<<std::setw(14)<<std::fixed<<std::setprecision(2)<<Wynagrodzenie<<" "<<std::endl;
+
+	//std::cout<<Imie<<" "<<Nazwisko<<" "<<Dataur<<" "<<Telefon<<" "<<IloscPodwladnych<<" "<<CzasPracy<<" "<<Wynagrodzenie<<std::endl;
 }
