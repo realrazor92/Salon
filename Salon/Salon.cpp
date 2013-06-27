@@ -4,25 +4,24 @@ extern Salon nowy;
 
 Salon::Salon(const std::string imie, const std::string nazwisko, const std::string telefon, const double wynagrodzenie, const unsigned short czas,
 			 const std::string nazwa, const double budzet, const double przychody, const double rozchody)
-			 :PrezesSalonu(imie , nazwisko , telefon , wynagrodzenie , czas), NazwaMarki(nazwa) , Budzet(budzet) , Przychody(przychody) , Rozchody(rozchody)
-{
-
-}
+			 :PrezesSalonu(imie , nazwisko , telefon , wynagrodzenie , czas), NazwaMarki(nazwa) , Budzet(budzet) , Przychody(przychody) ,
+			 Rozchody(rozchody)
+{}
 
 double Salon::PokazBudzet()
 {
-	Budzet = Przychody + Rozchody;
+	Budzet = Przychody + Rozchody;	//Tu chyba jest coœ nie tegez, skoro rozchody to wci¹¿ bud¿et.
 	return Budzet;
 }
 
 void Salon::WyplacWynagrodzenie()
 {
-	
+
 }
 
 void Salon::SprzedajSamochod()
 {
-	
+
 }
 
 void Salon::ZatrudnijPracownika(const Pracownik &P)
@@ -46,6 +45,8 @@ void SprawdzPrzecinki(std::string &buff, std::istringstream &linestream)	//Spraw
 	}
 }
 
+//-------------------Dostêpne samochody
+
 bool Salon::DostawaSamochodow(std::string nazwa)	//Tu trzeba dorobiæ obs³ugê b³êdów
 {
 	try
@@ -53,7 +54,7 @@ bool Salon::DostawaSamochodow(std::string nazwa)	//Tu trzeba dorobiæ obs³ugê b³ê
 		std::fstream plik;
 		std::string linia;
 		nazwa+=".csv";
-		plik.open(nazwa.c_str(), std::ios::in | std::ios::out);
+		plik.open(nazwa.c_str(), std::ios::in);
 
 		if(plik.good())
 		{
@@ -98,6 +99,11 @@ bool Salon::DostawaSamochodow(std::string nazwa)	//Tu trzeba dorobiæ obs³ugê b³ê
 				}
 			}
 		}
+		else
+		{
+			plik.close();
+			return false;
+		}
 		plik.close();
 		return true;
 	}
@@ -135,4 +141,97 @@ void Salon::WyswietlBazeSamochodow()
 
 	}
 	std::cout<<std::endl;
+}
+
+
+
+//------------------Personel
+
+bool Salon::ZaladujPersonel()	
+{
+	try
+	{
+		std::string nazwa = "personel";
+		std::fstream plik;
+		std::string linia;
+		nazwa+=".csv";
+		plik.open(nazwa.c_str(), std::ios::in | std::ios::out);
+
+		if(plik.good())
+		{
+			while(plik.good())
+			{
+				if (getline(plik, linia))
+				{
+					std::string Stanowisko, Imie, Nazwisko, Telefon, dzien, miesiac, rok;
+					unsigned short int Dzien, Miesiac, Rok;
+
+					std::istringstream linestream(linia);
+
+					getline(linestream,Stanowisko,',');
+
+					getline(linestream,Imie,',');
+					getline(linestream,Nazwisko,',');
+					getline(linestream,Telefon,',');
+					getline(linestream,dzien,',');
+					getline(linestream,miesiac,',');
+					getline(linestream,rok,',');
+
+					Dzien=atoi(dzien.c_str());
+					Miesiac=atof(miesiac.c_str());
+					Rok=atof(rok.c_str());
+
+					if(Stanowisko=="Pracownik")
+					{
+						//ID, Czas pracy, SprzedaneSamochody (vektor)
+						std::string id, czas;
+						unsigned short int ID, Czas;
+						getline(linestream,id,',');
+						ID = atoi(id.c_str());
+						getline(linestream,czas,'\n');
+						Czas = atoi(czas.c_str());
+						
+						Personel.push_back(new Pracownik(Imie,Nazwisko,Telefon,Dzien,Miesiac,Rok,ID,Czas));
+					}
+					if(Stanowisko=="Manager")
+					{
+						//Czas pracy, Ilosc podwladnych, Wynagrodzenie(?)
+						std::string czas, podwladni, wynagrodzenie;
+						unsigned short int Czas, Podwladni;
+						double Wynagrodzenie;
+						getline(linestream,wynagrodzenie,',');
+						Wynagrodzenie = atof(wynagrodzenie.c_str());
+						getline(linestream,czas,',');
+						Czas = atoi(czas.c_str());
+						getline(linestream,podwladni,'\,');
+						Podwladni = atoi(podwladni.c_str());
+						
+						Personel.push_back(new Manager(Imie,Nazwisko,Telefon,Wynagrodzenie,Czas,Podwladni));
+					}
+					//Stanowisko Prezesa -> Prezes Salonu (???)
+					//Klient ???
+
+				}
+			}
+		}
+		else
+		{
+			plik.close();
+			return false;
+		}
+		plik.close();
+		return true;
+	}
+	catch(...)
+	{
+		return false;
+	}
+}
+
+void Salon::WyswietlPersonel()
+{
+	for(unsigned int i=0; i<Personel.size(); ++i)
+	{
+		Personel[i]->Wyswietl();
+	}
 }

@@ -6,7 +6,8 @@
 #include "Prezes.h"
 #include "Samochod.h"
 #include "Pracownik.h"
-#include <map>
+#include "Manager.h"
+#include "Klient.h"
 
 class Salon
 {
@@ -27,10 +28,16 @@ public:
 	void ZatrudnijPracownika(const Pracownik &P); //ZROBIONE
 	void WyplacWynagrodzenie();
 	double PokazBudzet(); //ZROBIONE
+	//------------------------------------// Samochody dostêpne
 	bool DostawaSamochodow(std::string nazwa);// tu proponuje zrobic baze samochodow wczytana z pliku lub czegos, aby mozna by³o 
 											  //sprzedawaæ samochody, tak ¿eby by³o to dosyæ wiarygodnie opracowane.
 	int BazaSamochodow_Size() {return BazaSamochodow.size();}
 	void WyswietlBazeSamochodow();
 	void ZapiszBazeSamochodow();
+	//------------------------------------
+	bool ZaladujPersonel();
+	void WyswietlPersonel();
+
+
 };
 

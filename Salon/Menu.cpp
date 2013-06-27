@@ -14,7 +14,7 @@ const char Menu::Glowne()
 {
 	char k;
 	std::cout << "\n    MENU G£ÓWNE \n" 
-		"[1] Klient\n"//Aktualnie dostêpne modele\n"		
+		"[1] Klient\n"	
 		"[2] Salon\n\n"
 		"[0] Zakoñcz program\n"			
 		"\nWybierz: ";
@@ -162,7 +162,8 @@ void Menu::Interfejs()
 						}
 					case '2':		//Pracownicy
 						{
-							std::cout<<"Info o pracownikach...\n";
+							nowy.ZaladujPersonel();	//To docelowo bêdzie gdzieœ na pocz¹tku menu.
+							nowy.WyswietlPersonel();
 							break;
 						}
 					case '3':		//Zestawienia sprzeda¿y
@@ -204,8 +205,7 @@ void Menu::Interfejs()
 							std::cout<<"WprowadŸ nazwê pliku z baz¹ samochodów: ";
 							std::string nazwa;
 							std::cin>>nazwa;
-							bool flaga = nowy.DostawaSamochodow(nazwa);
-							if(flaga==true)
+							if(nowy.DostawaSamochodow(nazwa))
 							{
 								std::cout<<"Pomyœlnie dodano bazê samochodów.\n";
 							}
