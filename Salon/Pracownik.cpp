@@ -19,7 +19,7 @@ double Pracownik::NalezneWynagrodzenie()
 
 	return (CzasPracy * StawkaGodzinna) + (SumaSprzedazy * PremiaZaSprzedaz);
 }
-void Pracownik::SprzedajSamochod(Samochod &S)
+void Pracownik::SprzedajSamochod(SprzedanySamochod &S)
 {
 	SprzedaneSamochody.push_back(S);
 }

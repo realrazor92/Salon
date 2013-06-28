@@ -248,6 +248,7 @@ Menu::Menu()
 {
 	nowy.DostawaSamochodow("auta");
 	nowy.ZaladujPersonel();
+	nowy.ZaladujBazeSprzedanych();
 	Interfejs();
 }
 

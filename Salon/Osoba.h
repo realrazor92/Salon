@@ -1,6 +1,7 @@
 #pragma once
 #include "Biblioteki.h"
 #include "Data.h"
+#include "SprzedanySamochod.h"
 
 class Osoba
 {
@@ -14,4 +15,5 @@ public:
 	//friend std::ostream & operator << (std::ostream &Strumien, const Osoba &O);
 	virtual const char * getType()=0;
 	virtual void Wyswietl()const =0;
+	virtual void SprzedajSamochod(SprzedanySamochod &S)=0;
 };

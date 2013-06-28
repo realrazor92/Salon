@@ -188,7 +188,7 @@ bool Salon::ZaladujPersonel()
 						ID = atoi(id.c_str());
 						getline(linestream,czas,'\n');
 						Czas = atoi(czas.c_str());
-						
+
 						Personel.push_back(new Pracownik(Imie,Nazwisko,Telefon,Dzien,Miesiac,Rok,ID,Czas));
 					}
 					if(Stanowisko=="Manager")
@@ -203,7 +203,7 @@ bool Salon::ZaladujPersonel()
 						Czas = atoi(czas.c_str());
 						getline(linestream,podwladni,'\,');
 						Podwladni = atoi(podwladni.c_str());
-						
+
 						Personel.push_back(new Manager(Imie,Nazwisko,Telefon,Wynagrodzenie,Czas,Podwladni));
 					}
 					//Stanowisko Prezesa -> Prezes Salonu (???)
@@ -235,5 +235,100 @@ void Salon::WyswietlPersonel()
 	for(unsigned int i=0; i<Personel.size(); ++i)
 	{
 		Personel[i]->Wyswietl();
+	}
+}
+
+unsigned short int Salon::GetPos(const unsigned short int id) const
+{
+	for(int i=0; i<this->Personel.size();++i)
+	{
+		if(this->Personel[i]->getType() == typeid(Pracownik*).name())	//Czy Osoba jest pracownikiem
+		{
+			if(((Pracownik&)*this->Personel[i]).GetID()==id)
+			{
+				return i;
+			}
+		}
+	}
+return -1;
+}
+
+//------------------Sprzedane samochody
+
+bool Salon::ZaladujBazeSprzedanych()
+{
+	try
+	{
+		std::string nazwa = "sprzedane";
+		std::fstream plik;
+		std::string linia;
+		nazwa+=".csv";
+		plik.open(nazwa.c_str(), std::ios::in | std::ios::out);
+
+		if(plik.good())
+		{
+			while(plik.good())
+			{
+				if (getline(plik, linia))
+				{
+					std::string id, dzien, miesiac, rok, Marka, Model, nadwozie, naped, masa, masadop, cena, temp;
+					double Masa, MasaDop, Cena;
+					unsigned short int ID, Dzien, Miesiac, Rok;
+					Typ Nadwozie;
+					Rodzaj Naped;
+
+					std::istringstream linestream(linia);
+
+					getline(linestream,id,',');
+					ID=atoi(id.c_str());
+
+					getline(linestream,dzien,',');
+					Dzien=atoi(dzien.c_str());
+					getline(linestream,miesiac,',');
+					Miesiac=atoi(miesiac.c_str());
+					getline(linestream,rok,',');
+					Rok=atoi(rok.c_str());
+
+					getline(linestream,Marka,',');
+					SprawdzPrzecinki(Marka,linestream);	//Sprawdza wystêpuj¹ce przecinki. Je¿eli s¹ w " " to je dodaje do nazwy.
+
+					getline(linestream,Model,',');
+					SprawdzPrzecinki(Model,linestream);
+
+					getline(linestream,nadwozie,',');
+					getline(linestream,naped,',');
+					getline(linestream,masa,',');
+					getline(linestream,masadop,',');
+					getline(linestream,cena,'\n');
+
+					Masa=atof(masa.c_str());
+					MasaDop=atof(masadop.c_str());
+					Cena=atof(cena.c_str());
+
+					if(naped=="Przód")Naped=Przód;
+					if(naped=="Ty³")Naped=Ty³;
+					if(naped=="Obie_osie")Naped=Obie_osie;
+
+					if(nadwozie=="Hatchback")Nadwozie=Hatchback;
+					if(nadwozie=="Sedan")Nadwozie=Sedan;
+					if(nadwozie=="Kombi")Nadwozie=Kombi;
+					if(nadwozie=="SUV")Nadwozie=SUV;
+					if(nadwozie=="Dostawczy")Nadwozie=Dostawczy;
+
+					this->Personel[this->GetPos(ID)]->SprzedajSamochod(*new SprzedanySamochod(*new Samochod(Masa,MasaDop,Cena,Marka,Model,Naped,Nadwozie),*new Data(Dzien,Miesiac,Rok)));
+				}
+			}
+		}
+		else
+		{
+			plik.close();
+			return false;
+		}
+		plik.close();
+		return true;
+	}
+	catch(...)
+	{
+		return false;
 	}
 }

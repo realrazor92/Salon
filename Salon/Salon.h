@@ -8,6 +8,7 @@
 #include "Pracownik.h"
 #include "Manager.h"
 #include "Klient.h"
+#include "SprzedanySamochod.h"
 
 class Salon
 {
@@ -37,6 +38,9 @@ public:
 	//------------------------------------
 	bool ZaladujPersonel();
 	void WyswietlPersonel();
+	//------------------------------------
+	bool ZaladujBazeSprzedanych();
+	unsigned short int GetPos(const unsigned short int id) const;
 
 
 };

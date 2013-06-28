@@ -14,4 +14,5 @@ public:
 	friend std::ostream & operator <<(std::ostream &Strumien, const Prezes &P);
 	const char * getType(){	return typeid(this).name();}
 	void Wyswietl() const;
+	void SprzedajSamochod(SprzedanySamochod &S){}
 };
