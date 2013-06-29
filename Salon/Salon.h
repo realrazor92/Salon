@@ -20,8 +20,6 @@ private:
 	double Rozchody;	
 	std::string NazwaMarki;
 	std::vector<Samochod> BazaSamochodow;
-	std::vector<Samochod> SprzedaneSamochody;
-
 
 public:
 	Salon(const std::string imie, const std::string nazwisko , const std::string telefon, const double wynagrodzenie, const unsigned short int czas , const std::string nazwa , const double budzet , const double przychody , const double rozchody);
@@ -30,21 +28,19 @@ public:
 	void WyplacWynagrodzenie();
 	double PokazBudzet(); //ZROBIONE
 	//------------------------------------// Samochody dostêpne
-	bool DostawaSamochodow(std::string nazwa);// tu proponuje zrobic baze samochodow wczytana z pliku lub czegos, aby mozna by³o 
-											  //sprzedawaæ samochody, tak ¿eby by³o to dosyæ wiarygodnie opracowane.
+	bool DostawaSamochodow(std::string nazwa);
 	int BazaSamochodow_Size() {return BazaSamochodow.size();}
 	void WyswietlBazeSamochodow();
 	void ZapiszBazeSamochodow();
 	//------------------------------------//Personel
 	bool ZaladujPersonel();
-	void WyswietlPersonel();
+	void WyswietlPersonel() const;
 	//------------------------------------//Sprzedane samochody
 	bool ZaladujBazeSprzedanych();
-	unsigned short int GetPos(const unsigned short int id) const;
+	short int GetPos(const unsigned short int id) const;
 	//------------------------------------//Zestawienia
 	void ZestawienieOgolne();
-	//void ZestawienieMiesieczne(const unsigned short int Miesiac, const unsigned short int Rok);
-	//void ZestawieniePracownika();
-
+	void ZestawieniePracownika(const unsigned short int ID);
+	void ZestawienieMiesieczne(const unsigned short int Miesiac, const unsigned short int Rok);
 };
 

@@ -226,7 +226,7 @@ bool Salon::ZaladujPersonel()
 	}
 }
 
-void Salon::WyswietlPersonel()
+void Salon::WyswietlPersonel() const
 {
 	//system("cls");
 	std::cout<<"-----------------------------------Personel------------------------------------\n\n";
@@ -238,7 +238,7 @@ void Salon::WyswietlPersonel()
 	}
 }
 
-unsigned short int Salon::GetPos(const unsigned short int id) const
+short int Salon::GetPos(const unsigned short int id) const
 {
 	for(int i=0; i<this->Personel.size();++i)
 	{
@@ -250,7 +250,7 @@ unsigned short int Salon::GetPos(const unsigned short int id) const
 			}
 		}
 	}
-return -1;
+	return -1;
 }
 
 //------------------Sprzedane samochody
@@ -339,7 +339,7 @@ void Salon::ZestawienieOgolne()
 	std::cout<<"----------------Zestawienie wszystkich sprzedanych samochodów-----------------\n\n";
 	std::cout<<"    Marka    "<<"|"<<"     Model    "<<"|"<<"    Cena    "<<"|"<<" Data sp  "<<"|"<<" ID sprzedawcy "<<"|"<<std::endl;
 	std::cout<<"=============================================================================="<<std::endl;
-	
+
 	for(unsigned short int i=0; i<this->Personel.size(); ++i)
 	{
 		if(this->Personel[i]->getType() == typeid(Pracownik*).name())	//Czy Osoba jest pracownikiem
@@ -347,6 +347,57 @@ void Salon::ZestawienieOgolne()
 			for(unsigned short int j=0; j<((Pracownik&)*Personel[i]).SprzedaneSamochody_Size(); ++j)
 			{
 				((Pracownik&)*Personel[i]).getSprzedanySamochod(j).Wyswietl(((Pracownik&)*Personel[i]).GetID());
+			}
+		}
+	}
+	std::cout<<std::endl;
+}
+
+void Salon::ZestawieniePracownika(const unsigned short int ID)
+{
+	if(this->GetPos(ID) == -1)
+	{
+		std::cout<<"Nie znaleziono pracownika o takim ID!";
+		_getch();
+		system("cls");
+	}
+	else
+	{
+		std::cout<<"---------------------Zestawienie sprzedanych samochodów----------------------\n\n";
+
+		std::cout<<"Dane pracownika:"<<std::endl<<std::endl;
+		std::cout<<"   Imiê   "<<"|"<<" Nazwisko "<<"|"<<" Data ur. "<<"|"<<" Telefon "<<"|"<<"Czas"<<"|"<<" ID "<<std::endl;
+		std::cout<<"==============================================================================="<<std::endl;
+		Personel[this->GetPos(ID)]->Wyswietl();
+		std::cout<<std::endl;
+
+		std::cout<<"    Marka    "<<"|"<<"     Model    "<<"|"<<"    Cena    "<<"|"<<" Data sp  "<<"|"<<" ID sprzedawcy "<<"|"<<std::endl;
+		std::cout<<"=============================================================================="<<std::endl;
+		for(unsigned short int j=0; j<((Pracownik&)*Personel[this->GetPos(ID)]).SprzedaneSamochody_Size(); ++j)
+		{
+			((Pracownik&)*Personel[this->GetPos(ID)]).getSprzedanySamochod(j).Wyswietl(ID);
+		}
+		std::cout<<std::endl;
+	}
+}
+
+void Salon::ZestawienieMiesieczne(const unsigned short Miesiac, const unsigned short Rok)
+{
+	system("cls");
+	std::cout<<std::endl<<"---------------------Zestawienie sprzedanych samochodów-----------------------\n\n";
+	std::cout<<"    Marka    "<<"|"<<"     Model    "<<"|"<<"    Cena    "<<"|"<<" Data sp  "<<"|"<<" ID sprzedawcy "<<"|"<<std::endl;
+	std::cout<<"=============================================================================="<<std::endl;
+	for(unsigned short int i=0; i<this->Personel.size(); ++i)
+	{
+		if(this->Personel[i]->getType() == typeid(Pracownik*).name())	//Czy Osoba jest pracownikiem
+		{
+			for(unsigned short int j=0; j<((Pracownik&)*Personel[i]).SprzedaneSamochody_Size(); ++j)
+			{
+
+				if(((Pracownik&)*Personel[i]).getSprzedanySamochod(j).GetData().Rok == Rok && ((Pracownik&)*Personel[i]).getSprzedanySamochod(j).GetData().Miesiac == Miesiac)
+				{	
+					((Pracownik&)*Personel[i]).getSprzedanySamochod(j).Wyswietl(((Pracownik&)*Personel[i]).GetID());
+				}
 			}
 		}
 	}

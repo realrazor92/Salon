@@ -176,7 +176,12 @@ void Menu::Interfejs()
 								{
 								case '1':		//Zestawienie miesiêczne
 									{
-
+										unsigned short int Rok, Miesiac;
+										std::cout<<"Podaj rok: ";
+										std::cin>>Rok;
+										std::cout<<"Podaj miesi¹c: ";
+										std::cin>>Miesiac;
+										nowy.ZestawienieMiesieczne(Miesiac,Rok);
 										break;
 									}
 								case '2':		//Zestawienie ogólne
@@ -186,6 +191,14 @@ void Menu::Interfejs()
 									}
 								case '3':		//Zestawienie pracownika
 									{
+
+										nowy.WyswietlPersonel();
+										std::cout<<std::endl<<"WprowadŸ ID pracownika: ";
+										unsigned short int id;
+										std::cin>>id;
+										system("cls");
+
+										nowy.ZestawieniePracownika(id);
 										break;
 									}
 								default:
