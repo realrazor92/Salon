@@ -35,13 +35,16 @@ public:
 	int BazaSamochodow_Size() {return BazaSamochodow.size();}
 	void WyswietlBazeSamochodow();
 	void ZapiszBazeSamochodow();
-	//------------------------------------
+	//------------------------------------//Personel
 	bool ZaladujPersonel();
 	void WyswietlPersonel();
-	//------------------------------------
+	//------------------------------------//Sprzedane samochody
 	bool ZaladujBazeSprzedanych();
 	unsigned short int GetPos(const unsigned short int id) const;
-
+	//------------------------------------//Zestawienia
+	void ZestawienieOgolne();
+	//void ZestawienieMiesieczne(const unsigned short int Miesiac, const unsigned short int Rok);
+	//void ZestawieniePracownika();
 
 };
 

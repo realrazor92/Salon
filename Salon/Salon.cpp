@@ -332,3 +332,23 @@ bool Salon::ZaladujBazeSprzedanych()
 		return false;
 	}
 }
+//Zestawienia
+
+void Salon::ZestawienieOgolne()
+{
+	std::cout<<"----------------Zestawienie wszystkich sprzedanych samochodów-----------------\n\n";
+	std::cout<<"    Marka    "<<"|"<<"     Model    "<<"|"<<"    Cena    "<<"|"<<" Data sp  "<<"|"<<" ID sprzedawcy "<<"|"<<std::endl;
+	std::cout<<"=============================================================================="<<std::endl;
+	
+	for(unsigned short int i=0; i<this->Personel.size(); ++i)
+	{
+		if(this->Personel[i]->getType() == typeid(Pracownik*).name())	//Czy Osoba jest pracownikiem
+		{
+			for(unsigned short int j=0; j<((Pracownik&)*Personel[i]).SprzedaneSamochody_Size(); ++j)
+			{
+				((Pracownik&)*Personel[i]).getSprzedanySamochod(j).Wyswietl(((Pracownik&)*Personel[i]).GetID());
+			}
+		}
+	}
+	std::cout<<std::endl;
+}

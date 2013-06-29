@@ -176,10 +176,12 @@ void Menu::Interfejs()
 								{
 								case '1':		//Zestawienie miesiêczne
 									{
+
 										break;
 									}
 								case '2':		//Zestawienie ogólne
 									{
+										nowy.ZestawienieOgolne();
 										break;
 									}
 								case '3':		//Zestawienie pracownika

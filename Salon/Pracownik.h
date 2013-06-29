@@ -20,5 +20,7 @@ public:
 	const char * getType(){	return typeid(this).name();}
 	unsigned short int GetID() const {return ID;}
 	void SprzedajSamochod(SprzedanySamochod &S);
+	int SprzedaneSamochody_Size() {return SprzedaneSamochody.size();}
+	SprzedanySamochod getSprzedanySamochod(unsigned short int i) {return SprzedaneSamochody[i];}
 
 };
