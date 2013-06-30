@@ -25,7 +25,7 @@ public:
 	void SprzedajSamochod(Samochod &S);
 	void ZatrudnijPracownika(const Pracownik &P); 
 	void WyplacWynagrodzenie(); 
-	double PokazBudzet(); 
+	double BilansSalonu(); 
 	//------------------------------------// Samochody dostêpne
 	bool DostawaSamochodow(std::string nazwa);
 	int BazaSamochodow_Size() {return BazaSamochodow.size();}

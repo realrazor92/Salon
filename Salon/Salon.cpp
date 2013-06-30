@@ -10,9 +10,14 @@ Salon::Salon(const std::string imie, const std::string nazwisko, const std::stri
 }
 	
 
-double Salon::PokazBudzet()
+double Salon::BilansSalonu()
 {
-	Budzet = Przychody + Rozchody;	//Tu chyba jest coœ nie tegez, skoro rozchody to wci¹¿ bud¿et.
+	Budzet = Przychody + Rozchody;
+	std::cout << "----- Bilans Salonu -----" << "\n"
+		<< "Przychody salonu : " << std::setw(10) << Przychody << "\n"
+		<< "Rozchody salonu : " << std::setw(10) << Rozchody << "\n"
+		<< std::setw(28) << std::setfill('-') << "\n"
+		<< "Ogolny bilans: " << std::setw(10) << Budzet << "\n";
 	return Budzet;
 }
 
