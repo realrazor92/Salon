@@ -4,7 +4,6 @@
 #include "Manager.h"
 #include "Pracownik.h"
 #include "Prezes.h"
-#include "Klient.h"
 #include "Salon.h"
 #include "Menu.h"
 

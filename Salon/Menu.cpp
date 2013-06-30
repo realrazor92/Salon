@@ -264,6 +264,7 @@ Menu::Menu()
 	nowy.DostawaSamochodow("auta");
 	nowy.ZaladujPersonel();
 	nowy.ZaladujBazeSprzedanych();
+	nowy.WyplacWynagrodzenie();
 	Interfejs();
 }
 

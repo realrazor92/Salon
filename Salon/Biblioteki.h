@@ -8,3 +8,5 @@
 #include <ostream>
 #include <locale.h>		
 #include <cctype>
+#include <cstdlib>
+#include <ctime>
