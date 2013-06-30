@@ -11,13 +11,14 @@ double Pracownik::NalezneWynagrodzenie()
 	double SumaSprzedazy = 0;
 	unsigned short int StawkaGodzinna = 10;
 	double PremiaZaSprzedaz = 0.01;
+	Wynagrodzenie = 0;
 
 	for(int i = 0 ; i < SprzedaneSamochody.size(); ++i)
 	{
 		SumaSprzedazy += SprzedaneSamochody[i].getCena();
 	}
-
-	return (CzasPracy * StawkaGodzinna) + (SumaSprzedazy * PremiaZaSprzedaz);
+	Wynagrodzenie = (CzasPracy * StawkaGodzinna) + (SumaSprzedazy * PremiaZaSprzedaz);
+	return Wynagrodzenie;
 }
 void Pracownik::SprzedajSamochod(SprzedanySamochod &S)
 {
@@ -44,5 +45,7 @@ void  Pracownik::Wyswietl()const	//TODO: Formatowanie
 			 <<std::setw(10)<<Dataur<<" "
 			 <<std::setfill(' ')<<std::setw(9)<<Telefon<<" "
   			 <<std::setfill(' ')<<std::setw(4)<<CzasPracy<<" "
-			 <<std::setfill(' ')<<std::setw(4)<<ID<<" "<<std::endl;
+			 <<std::setfill(' ')<<std::setw(4)<<ID<<" "
+			 <<std::setw(12)<<std::setfill(' ')<<" "
+			 <<std::setfill(' ')<<std::setw(14)<<std::fixed<<std::setprecision(2)<<Wynagrodzenie<<" "<<std::endl;
 }

@@ -10,6 +10,7 @@ class Pracownik : public Osoba
 private:
 	unsigned short int CzasPracy;	
 	unsigned short int ID;
+	double Wynagrodzenie;
 	std::vector<SprzedanySamochod> SprzedaneSamochody;
 public:
 	Pracownik(const std::string imie, const std::string nazwisko, const std::string telefon, const unsigned short int dzien,
