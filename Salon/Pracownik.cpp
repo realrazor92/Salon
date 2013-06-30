@@ -47,5 +47,5 @@ void  Pracownik::Wyswietl()const	//TODO: Formatowanie
   			 <<std::setfill(' ')<<std::setw(4)<<CzasPracy<<" "
 			 <<std::setfill(' ')<<std::setw(4)<<ID<<" "
 			 <<std::setw(12)<<std::setfill(' ')<<" "
-			 <<std::setfill(' ')<<std::setw(14)<<std::fixed<<std::setprecision(2)<<Wynagrodzenie<<" "<<std::endl;
+			 <<std::setfill(' ')<<std::setw(14)<<std::fixed<<std::setprecision(2)<<Wynagrodzenie<<" ";
 }
