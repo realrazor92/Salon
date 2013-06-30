@@ -17,12 +17,14 @@ private:
 	std::vector<Osoba*> Personel;
 	double Budzet;
 	double Przychody;
-	double Rozchody;	
+	double Rozchody;
+	double Czynsz;
 	std::string NazwaMarki;
 	std::vector<Samochod> BazaSamochodow;
 
 public:
-	Salon(const std::string imie, const std::string nazwisko , const std::string telefon, const double wynagrodzenie, const unsigned short int czas , const std::string nazwa , const double budzet , const double przychody , const double rozchody);
+	Salon(const std::string imie, const std::string nazwisko, const std::string telefon, const unsigned short czas, 
+            const std::string nazwa, const double budzet, const double przychody, const double rozchody, const double czynsz);
 	void SprzedajSamochod();
 	void ZatrudnijPracownika(const Pracownik &P); //ZROBIONE
 	void WyplacWynagrodzenie();
