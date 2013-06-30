@@ -20,3 +20,8 @@ std::ostream & operator <<(std::ostream &Strumien, const Prezes &P)
 	Strumien <<P.Imie<<" "<<P.Nazwisko<<" "<<P.Dataur<< " "<<P.Telefon <<" "<< P.CzasPracy <<" "<<P.Wynagrodzenie<<std::endl; 
 	return Strumien;
 }
+
+void Prezes::Wyswietl() const
+{
+
+}

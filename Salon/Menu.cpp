@@ -14,7 +14,7 @@ const char Menu::Glowne()
 {
 	char k;
 	std::cout << "\n    MENU G£ÓWNE \n" 
-		"[1] Klient\n"//Aktualnie dostêpne modele\n"		
+		"[1] Klient\n"	
 		"[2] Salon\n\n"
 		"[0] Zakoñcz program\n"			
 		"\nWybierz: ";
@@ -162,7 +162,7 @@ void Menu::Interfejs()
 						}
 					case '2':		//Pracownicy
 						{
-							std::cout<<"Info o pracownikach...\n";
+							nowy.WyswietlPersonel();
 							break;
 						}
 					case '3':		//Zestawienia sprzeda¿y
@@ -176,14 +176,29 @@ void Menu::Interfejs()
 								{
 								case '1':		//Zestawienie miesiêczne
 									{
+										unsigned short int Rok, Miesiac;
+										std::cout<<"Podaj rok: ";
+										std::cin>>Rok;
+										std::cout<<"Podaj miesi¹c: ";
+										std::cin>>Miesiac;
+										nowy.ZestawienieMiesieczne(Miesiac,Rok);
 										break;
 									}
 								case '2':		//Zestawienie ogólne
 									{
+										nowy.ZestawienieOgolne();
 										break;
 									}
 								case '3':		//Zestawienie pracownika
 									{
+
+										nowy.WyswietlPersonel();
+										std::cout<<std::endl<<"WprowadŸ ID pracownika: ";
+										unsigned short int id;
+										std::cin>>id;
+										system("cls");
+
+										nowy.ZestawieniePracownika(id);
 										break;
 									}
 								default:
@@ -204,8 +219,7 @@ void Menu::Interfejs()
 							std::cout<<"WprowadŸ nazwê pliku z baz¹ samochodów: ";
 							std::string nazwa;
 							std::cin>>nazwa;
-							bool flaga = nowy.DostawaSamochodow(nazwa);
-							if(flaga==true)
+							if(nowy.DostawaSamochodow(nazwa))
 							{
 								std::cout<<"Pomyœlnie dodano bazê samochodów.\n";
 							}
@@ -248,6 +262,8 @@ void Menu::Interfejs()
 Menu::Menu()
 {
 	nowy.DostawaSamochodow("auta");
+	nowy.ZaladujPersonel();
+	nowy.ZaladujBazeSprzedanych();
 	Interfejs();
 }
 

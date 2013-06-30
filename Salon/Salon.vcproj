@@ -219,6 +219,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\SprzedanySamochod.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\UjemnaWartosc.cpp"
 				>
 			</File>
@@ -273,6 +277,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\SprzedanySamochod.h"
+				>
+			</File>
+			<File
 				RelativePath=".\UjemnaWartosc.h"
 				>
 			</File>
@@ -284,7 +292,7 @@
 			>
 		</Filter>
 		<File
-			RelativePath=".\ClassDiagram12.cd"
+			RelativePath=".\ClassDiagram21.cd"
 			>
 		</File>
 	</Files>

@@ -8,6 +8,8 @@
 #include "Pracownik.h"
 #include "Manager.h"
 #include <map>
+#include "Klient.h"
+#include "SprzedanySamochod.h"
 
 class Salon
 {
@@ -20,8 +22,6 @@ private:
 	double Czynsz;
 	std::string NazwaMarki;
 	std::vector<Samochod> BazaSamochodow;
-	std::vector<Samochod> SprzedaneSamochody;
-
 
 public:
 	Salon(const std::string imie, const std::string nazwisko , const std::string telefon, const unsigned short int czas , const std::string nazwa , const double budzet , const double przychody , const double rozchody, const double czynsz);
@@ -29,10 +29,20 @@ public:
 	void ZatrudnijPracownika(const Pracownik &P); //ZROBIONE
 	void WyplacWynagrodzenie(); //ZROBIONE
 	double PokazBudzet(); //ZROBIONE
-	bool DostawaSamochodow(std::string nazwa);// tu proponuje zrobic baze samochodow wczytana z pliku lub czegos, aby mozna by³o 
-											  //sprzedawaæ samochody, tak ¿eby by³o to dosyæ wiarygodnie opracowane.
+	//------------------------------------// Samochody dostêpne
+	bool DostawaSamochodow(std::string nazwa);
 	int BazaSamochodow_Size() {return BazaSamochodow.size();}
 	void WyswietlBazeSamochodow();
 	void ZapiszBazeSamochodow();
+	//------------------------------------//Personel
+	bool ZaladujPersonel();
+	void WyswietlPersonel() const;
+	//------------------------------------//Sprzedane samochody
+	bool ZaladujBazeSprzedanych();
+	short int GetPos(const unsigned short int id) const;
+	//------------------------------------//Zestawienia
+	void ZestawienieOgolne();
+	void ZestawieniePracownika(const unsigned short int ID);
+	void ZestawienieMiesieczne(const unsigned short int Miesiac, const unsigned short int Rok);
 };
 

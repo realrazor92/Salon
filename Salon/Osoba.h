@@ -1,11 +1,11 @@
 #pragma once
 #include "Biblioteki.h"
 #include "Data.h"
+#include "SprzedanySamochod.h"
 
 class Osoba
 {
 protected:
-	//trzeba jeszcze dorobic klase data
 	std::string Imie;
 	std::string Nazwisko;
 	std::string Telefon;
@@ -15,4 +15,6 @@ public:
 	//friend std::ostream & operator << (std::ostream &Strumien, const Osoba &O);
 	virtual double NalezneWynagrodzenie() = 0;
 	virtual const char * getType()=0;
+	virtual void Wyswietl()const =0;
+	virtual void SprzedajSamochod(SprzedanySamochod &S)=0;
 };
