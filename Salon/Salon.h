@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Biblioteki.h"
 #include "UjemnaWartosc.h"
 #include "Osoba.h"
@@ -7,8 +6,6 @@
 #include "Samochod.h"
 #include "Pracownik.h"
 #include "Manager.h"
-#include <map>
-#include "Klient.h"
 #include "SprzedanySamochod.h"
 
 class Salon
@@ -25,10 +22,10 @@ private:
 
 public:
 	Salon(const std::string imie, const std::string nazwisko , const std::string telefon, const unsigned short int czas , const std::string nazwa , const double budzet , const double przychody , const double rozchody, const double czynsz);
-	void SprzedajSamochod();
-	void ZatrudnijPracownika(const Pracownik &P); //ZROBIONE
-	void WyplacWynagrodzenie(); //ZROBIONE
-	double PokazBudzet(); //ZROBIONE
+	void SprzedajSamochod(Samochod &S);
+	void ZatrudnijPracownika(const Pracownik &P); 
+	void WyplacWynagrodzenie(); 
+	double BilansSalonu(); 
 	//------------------------------------// Samochody dostêpne
 	bool DostawaSamochodow(std::string nazwa);
 	int BazaSamochodow_Size() {return BazaSamochodow.size();}

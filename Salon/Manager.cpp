@@ -1,15 +1,14 @@
 #include "Manager.h"
 
-Manager::Manager(const std::string imie, const std::string nazwisko, const std::string telefon, const double wynagrodzenie, 
-				 const unsigned short czas, const unsigned int podwladni)
-:Osoba(imie,nazwisko,telefon), Wynagrodzenie(wynagrodzenie), CzasPracy(czas), IloscPodwladnych(podwladni)
+Manager::Manager(const std::string imie, const std::string nazwisko, const std::string telefon, const unsigned short int id, const unsigned short int czas, const unsigned int podwladni)
+:Osoba(imie,nazwisko,telefon), ID(id) , CzasPracy(czas), IloscPodwladnych(podwladni)
 {
-	if(wynagrodzenie < 0 || czas < 0 || podwladni < 0)
+	if(czas < 0 || podwladni < 0 || id < 0)
 	{
 		throw UjemnaWartosc();
 	}
 }
-void Manager::SprzedajSamochod(Samochod &S)
+void Manager::SprzedajSamochod(SprzedanySamochod &S)
 {
 	SprzedaneSamochody.push_back(S);
 }
@@ -24,8 +23,8 @@ double Manager::NalezneWynagrodzenie()
 	{
 		SumaSprzedazy += SprzedaneSamochody[i].getCena();
 	}
-
-	return (CzasPracy * StawkaGodzinna) + (SumaSprzedazy * PremiaZaSprzedaz) + (IloscPodwladnych * BonusZaPodwladnego);
+	Wynagrodzenie = (CzasPracy * StawkaGodzinna) + (SumaSprzedazy * PremiaZaSprzedaz) + (IloscPodwladnych * BonusZaPodwladnego);
+	return Wynagrodzenie;
 }
 std::ostream & operator <<(std::ostream &Strumien, const Manager &M)
 {

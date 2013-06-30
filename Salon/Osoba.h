@@ -16,5 +16,5 @@ public:
 	virtual double NalezneWynagrodzenie() = 0;
 	virtual const char * getType()=0;
 	virtual void Wyswietl()const =0;
-	virtual void SprzedajSamochod(SprzedanySamochod &S)=0;
+	virtual void SprzedajSamochod(SprzedanySamochod &S) = 0;
 };

@@ -8,16 +8,16 @@ Salon::Salon(const std::string imie, const std::string nazwisko, const std::stri
 {
 
 }
+	
 
-Salon::Salon(const std::string imie, const std::string nazwisko, const std::string telefon, const double wynagrodzenie, const unsigned short czas,
-			 const std::string nazwa, const double budzet, const double przychody, const double rozchody)
-			 :PrezesSalonu(imie , nazwisko , telefon , wynagrodzenie , czas), NazwaMarki(nazwa) , Budzet(budzet) , Przychody(przychody) ,
-			 Rozchody(rozchody)
-{}
-
-double Salon::PokazBudzet()
+double Salon::BilansSalonu()
 {
-	Budzet = Przychody + Rozchody;	//Tu chyba jest coœ nie tegez, skoro rozchody to wci¹¿ bud¿et.
+	Budzet = Przychody + Rozchody;
+	std::cout << "----- Bilans Salonu -----" << "\n"
+		<< "Przychody salonu : " << std::setw(10) << Przychody << "\n"
+		<< "Rozchody salonu : " << std::setw(10) << Rozchody << "\n"
+		<< std::setw(28) << std::setfill('-') << "\n"
+		<< "Ogolny bilans: " << std::setw(10) << Budzet << "\n";
 	return Budzet;
 }
 
@@ -33,9 +33,30 @@ void Salon::WyplacWynagrodzenie()
 
 	Rozchody -= Czynsz;
 }
-void Salon::SprzedajSamochod()
+void Salon::SprzedajSamochod(Samochod &S)
 {
+	int min = 0;
+	int max = this->Personel.size();
+	int wybor = 0;
+	srand(time(NULL));
 
+	int LosowyPracownik = rand()%(max-min+1)+min;
+
+	this->WyswietlBazeSamochodow();
+
+	std::cout << "Zakup samochod nr ";
+	std::cin >> wybor;
+	if(wybor - 1 > this->BazaSamochodow.size())
+	{
+		std::cout << "\n Numer spoza listy, sprobuj ponownie\n";
+		this->SprzedajSamochod(S);
+	}
+	else
+	{
+		this->Personel[LosowyPracownik]->SprzedajSamochod(SprzedanySamochod(S,Data()));
+		this->BazaSamochodow.erase(this->BazaSamochodow.begin() + (wybor-1));
+		this->ZapiszBazeSamochodow();
+	}
 }
 
 void Salon::ZatrudnijPracownika(const Pracownik &P)
@@ -143,7 +164,7 @@ void Salon::WyswietlBazeSamochodow()
 
 	for(int i=0; i<nowy.BazaSamochodow_Size();++i)
 	{
-		std::cout<<std::setw(13)<<BazaSamochodow[i].getMarka()<<", "											//Marka
+			std::cout<<std::setw(2)<< i+1 << ". "<<std::setw(11)<<BazaSamochodow[i].getMarka()<<", "			//Marka
 			<<std::setw(13)<<BazaSamochodow[i].getModel()<<", "													//Model
 			<<std::setw(9)<<BazaSamochodow[i].getNadwozie()<<", "												//Nadwozie
 			<<std::setw(6)<<BazaSamochodow[i].getNaped()<<", "													//Naped
