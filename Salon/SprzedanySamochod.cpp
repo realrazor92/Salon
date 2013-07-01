@@ -14,3 +14,16 @@ void SprzedanySamochod::Wyswietl(unsigned short int ID)
 			<<std::endl;																		//Cena
 
 }
+
+std::ostream & operator <<(std::ostream &Strumien, SprzedanySamochod &S)
+{
+	Strumien <<std::fixed<<std::setfill('0') << std::setw(3) << S.DataSprzedazy.Dzien<< "," 
+		<< std::fixed<<std::setfill('0') << std::setw(2) << S.DataSprzedazy.Miesiac << "," 
+		<< S.DataSprzedazy.Rok << "," 
+		<< S.getMarka() << "," << S.getModel() << ","
+		<< S.getNadwozie() << "," << S.getNaped() << "," 
+		<< std::setprecision(2) << S.getMasaPojazdu() << ","
+		<< std::setprecision(2) << S.getMasaDopuszczalna() << ","
+		<< std::setprecision(2) << S.getCena() << std::endl;
+	return Strumien;
+}

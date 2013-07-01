@@ -8,7 +8,7 @@ Salon::Salon(const std::string imie, const std::string nazwisko, const std::stri
 {
 
 }
-	
+
 
 double Salon::BilansSalonu()
 {
@@ -164,13 +164,13 @@ void Salon::WyswietlBazeSamochodow()
 
 	for(int i=0; i<nowy.BazaSamochodow_Size();++i)
 	{
-			std::cout<<std::setw(2)<< i+1 << ". "<<std::setw(11)<<BazaSamochodow[i].getMarka()<<", "			//Marka
+		std::cout<<std::setw(2)<< i+1 << ". "<<std::setw(11)<<BazaSamochodow[i].getMarka()<<", "			//Marka
 			<<std::setw(13)<<BazaSamochodow[i].getModel()<<", "													//Model
 			<<std::setw(9)<<BazaSamochodow[i].getNadwozie()<<", "												//Nadwozie
 			<<std::setw(6)<<BazaSamochodow[i].getNaped()<<", "													//Naped
 			<<std::setw(5)<<std::fixed<<std::setprecision(0)<<BazaSamochodow[i].getMasaPojazdu()<<", "			//Masa
 			<<std::setw(7)<<std::fixed<<std::setprecision(0)<<BazaSamochodow[i].getMasaDopuszczalna()<<", "		//Masa dopuszczalna
-			<<std::setw(7)<<std::fixed<<std::setprecision(2)<<BazaSamochodow[i].getCena()<<" zl"<<std::endl;	//Cena
+			<<std::setw(7)<<std::fixed<<std::setprecision(2)<<BazaSamochodow[i].getCena()<<" zl";				//Cena
 
 	}
 	std::cout<<std::endl;
@@ -366,6 +366,29 @@ bool Salon::ZaladujBazeSprzedanych()
 	{
 		return false;
 	}
+}
+void Salon::ZapiszBazeSprzedanych()
+{
+
+	std::ofstream Plik("sprzedane.csv");
+	for(unsigned short int i = 0 ; i<Personel.size() ; ++i)
+	{
+		if(this->Personel[i]->getType() == typeid(Pracownik*).name())
+		{
+			for(unsigned short int j = 0 ; j<((Pracownik&)*Personel[i]).SprzedaneSamochody_Size() ; ++j)
+			{
+				Plik << ((Pracownik&)*Personel[i]).GetID() << "," << ((SprzedanySamochod&)(((Pracownik&)*Personel[i])).getSprzedanySamochod(j));
+			}
+		}
+		if(this->Personel[i]->getType() == typeid(Manager*).name())
+		{
+			for(unsigned short int j = 0 ; j<((Manager&)*Personel[i]).SprzedaneSamochody_Size() ; ++j)
+			{
+				Plik << ((Manager&)*Personel[i]).GetID() << "," << ((SprzedanySamochod&)(((Manager&)*Personel[i])).getSprzedanySamochod(j));
+			}
+		}
+	}
+
 }
 //Zestawienia
 

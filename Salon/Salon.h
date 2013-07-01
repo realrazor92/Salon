@@ -36,6 +36,7 @@ public:
 	void WyswietlPersonel() const;
 	//------------------------------------//Sprzedane samochody
 	bool ZaladujBazeSprzedanych();
+	void ZapiszBazeSprzedanych();
 	short int GetPos(const unsigned short int id) const;
 	//------------------------------------//Zestawienia
 	void ZestawienieOgolne();
