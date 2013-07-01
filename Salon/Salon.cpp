@@ -33,7 +33,7 @@ void Salon::WyplacWynagrodzenie()
 
 	Rozchody -= Czynsz;
 }
-void Salon::SprzedajSamochod(Samochod &S)
+void Salon::SprzedajSamochod()
 {
 	int min = 0;
 	int max = this->Personel.size();
@@ -49,11 +49,11 @@ void Salon::SprzedajSamochod(Samochod &S)
 	if(wybor - 1 > this->BazaSamochodow.size())
 	{
 		std::cout << "\n Numer spoza listy, sprobuj ponownie\n";
-		this->SprzedajSamochod(S);
+		this->SprzedajSamochod();
 	}
 	else
 	{
-		this->Personel[LosowyPracownik]->SprzedajSamochod(SprzedanySamochod(S,Data()));
+		this->Personel[LosowyPracownik]->SprzedajSamochod(SprzedanySamochod(this->BazaSamochodow[wybor-1],Data()));
 		this->BazaSamochodow.erase(this->BazaSamochodow.begin() + (wybor-1));
 		this->ZapiszBazeSamochodow();
 	}

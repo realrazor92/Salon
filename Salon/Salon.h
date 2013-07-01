@@ -22,7 +22,7 @@ private:
 
 public:
 	Salon(const std::string imie, const std::string nazwisko , const std::string telefon, const unsigned short int czas , const std::string nazwa , const double budzet , const double przychody , const double rozchody, const double czynsz);
-	void SprzedajSamochod(Samochod &S);
+	void SprzedajSamochod();
 	void ZatrudnijPracownika(const Pracownik &P); 
 	void WyplacWynagrodzenie(); 
 	double BilansSalonu(); 
