@@ -23,5 +23,13 @@ public:
 	void SprzedajSamochod(SprzedanySamochod &S);
 	int SprzedaneSamochody_Size() {return SprzedaneSamochody.size();}
 	SprzedanySamochod getSprzedanySamochod(unsigned short int i) {return SprzedaneSamochody[i];}
-
+	std::string getImie() {return Imie;}
+	std::string getNazwisko() {return Nazwisko;}
+	std::string getTelefon() {return Telefon;}
+	Data getDataur() {return Dataur;}
+	unsigned short int getCzasPracy() {return CzasPracy;}
+	double getWynagrodzenie() {return Wynagrodzenie;}
+	unsigned short int getIloscPodwladnych() {return 0;}
+	friend void DrukujZestawieniePracownika(std::string &nazwa, unsigned short int id);
+	friend void DrukujZestawienieMiesieczne(std::string &nazwa, unsigned short int rok, unsigned short int miesiac);
 };

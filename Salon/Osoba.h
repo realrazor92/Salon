@@ -18,5 +18,11 @@ public:
 	virtual void Wyswietl()const =0;
 	virtual unsigned short int GetID() const = 0;
 	virtual void SprzedajSamochod(SprzedanySamochod &S) = 0;
-
+	virtual std::string getImie() = 0;
+	virtual std::string getNazwisko() = 0;
+	virtual std::string getTelefon() = 0;
+	virtual Data getDataur() = 0;
+	virtual unsigned short int getCzasPracy() =0;
+	virtual double getWynagrodzenie() = 0;
+	virtual unsigned short int getIloscPodwladnych() = 0;
 };
