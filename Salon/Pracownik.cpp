@@ -38,7 +38,7 @@ std::ostream & operator <<(std::ostream &Strumien, const Pracownik &P)	//TODO: d
 	return Strumien;
 }
 
-void  Pracownik::Wyswietl()const	//TODO: Formatowanie
+void  Pracownik::Wyswietl()const
 {
 	std::cout<<std::setw(10)<<Imie<<" "
 			 <<std::setw(10)<<Nazwisko<<" "

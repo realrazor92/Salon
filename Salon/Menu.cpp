@@ -56,8 +56,7 @@ const char Menu::Budzet()
 {
 	char k;
 	std::cout << "    MENU BUD¯ETU \n\n" 
-		"[1] Przychody\n"		
-		"[2] Rozchody\n\n"
+		"[1] Bilans salonu\n"		
 
 		"[0] Powrót do menu g³ównego\n"			
 		"\nWybierz: ";
@@ -111,6 +110,8 @@ void Menu::Interfejs()
 						}
 					case '2':		//Zakup samochodu
 						{
+							//nowy.SprzedajSamochod(/* a co tu wpisaæ? */);
+							nowy.ZapiszBazeSprzedanych();
 							break;
 						}
 					default:
@@ -140,12 +141,9 @@ void Menu::Interfejs()
 								k=Budzet();
 								switch(k)
 								{
-								case '1':		//Przychody
+								case '1':		//Bilans salonu
 									{
-										break;
-									}
-								case '2':		//Rozchody
-									{
+										nowy.BilansSalonu();
 										break;
 									}
 								default:

@@ -183,10 +183,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Klient.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\main.cpp"
 				>
 			</File>
@@ -242,10 +238,6 @@
 			</File>
 			<File
 				RelativePath=".\Data.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Klient.h"
 				>
 			</File>
 			<File
