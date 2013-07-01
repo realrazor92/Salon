@@ -183,6 +183,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\HTML.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\main.cpp"
 				>
 			</File>
@@ -238,6 +242,10 @@
 			</File>
 			<File
 				RelativePath=".\Data.h"
+				>
+			</File>
+			<File
+				RelativePath=".\HTML.h"
 				>
 			</File>
 			<File

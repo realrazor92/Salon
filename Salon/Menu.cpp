@@ -28,7 +28,9 @@ const char Menu::Klient()
 	char k;
 	std::cout << "    MENU KLIENTA \n\n" 
 		"[1] Baza aktualnie dostêpnych samochodów\n"		
-		"[2] Zakup samochodu\n\n"
+		"[2] Zakup samochodu\n"
+		"[3] Drukuj bazê aktualnie dostêpnych samochodów\n\n"
+
 		"[0] Powrót do menu g³ównego\n"			
 		"\nWybierz: ";
 	std::cin >> k;
@@ -112,6 +114,14 @@ void Menu::Interfejs()
 						{
 							nowy.SprzedajSamochod();
 							nowy.ZapiszBazeSprzedanych();
+							break;
+						}
+					case '3':
+						{
+							std::cout<< "Podaj docelow¹ nazwê pliku: ";
+							std::string nazwa;
+							cin>>nazwa;
+							DrukujZestawienieDostepnychSamochodow(nazwa);
 							break;
 						}
 					default:

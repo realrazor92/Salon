@@ -42,5 +42,6 @@ public:
 	void ZestawienieOgolne();
 	void ZestawieniePracownika(const unsigned short int ID);
 	void ZestawienieMiesieczne(const unsigned short int Miesiac, const unsigned short int Rok);
+	friend void DrukujZestawienieDostepnychSamochodow(std::string nazwa);
 };
 
