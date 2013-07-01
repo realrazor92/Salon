@@ -110,7 +110,7 @@ void Menu::Interfejs()
 						}
 					case '2':		//Zakup samochodu
 						{
-							//nowy.SprzedajSamochod(/* a co tu wpisaæ? */);
+							nowy.SprzedajSamochod();
 							nowy.ZapiszBazeSprzedanych();
 							break;
 						}
