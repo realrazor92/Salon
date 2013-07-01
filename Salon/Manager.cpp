@@ -1,7 +1,8 @@
 #include "Manager.h"
 
-Manager::Manager(const std::string imie, const std::string nazwisko, const std::string telefon, const unsigned short int id, const unsigned short int czas, const unsigned int podwladni)
-:Osoba(imie,nazwisko,telefon), ID(id) , CzasPracy(czas), IloscPodwladnych(podwladni)
+Manager::Manager(const std::string imie, const std::string nazwisko, const std::string telefon, const unsigned short int dzien,
+				 const unsigned short int miesiac, const unsigned short int rok, const unsigned short int id, const unsigned short int czas, const unsigned int podwladni)
+:Osoba(imie,nazwisko,telefon,dzien,miesiac,rok), ID(id) , CzasPracy(czas), IloscPodwladnych(podwladni)
 {
 	if(czas < 0 || podwladni < 0 || id < 0)
 	{
@@ -26,9 +27,10 @@ double Manager::NalezneWynagrodzenie()
 	Wynagrodzenie = (CzasPracy * StawkaGodzinna) + (SumaSprzedazy * PremiaZaSprzedaz) + (IloscPodwladnych * BonusZaPodwladnego);
 	return Wynagrodzenie;
 }
+
 std::ostream & operator <<(std::ostream &Strumien, const Manager &M)
 {
-	Strumien <<M.Imie<<" "<<M.Nazwisko<<" "<<M.Dataur<< " "<< M.Telefon <<" "<< M.Wynagrodzenie <<" "<<M.CzasPracy <<" "<<M.IloscPodwladnych<<std::endl; 
+	Strumien <<M.Imie<<" "<<M.Nazwisko<<" "<<M.Dataur<< " "<< M.Telefon <<" "<< M.ID <<" "<<M.CzasPracy <<" "<<M.IloscPodwladnych<<std::endl; 
 	return Strumien;
 }
 
@@ -39,9 +41,7 @@ void Manager::Wyswietl() const
 			 <<std::setw(10)<<Dataur<<" "
 			 <<std::setfill(' ')<<std::setw(9)<<Telefon<<" "
   			 <<std::setfill(' ')<<std::setw(4)<<CzasPracy<<" "
-			 <<std::setfill(' ')<<std::setw(4)<<""<<" "
+			 <<std::setfill(' ')<<std::setw(4)<<ID<<" "
 			 <<std::setfill(' ')<<std::setw(11)<<IloscPodwladnych<<" "
 			 <<std::setfill(' ')<<std::setw(14)<<std::fixed<<std::setprecision(2)<<Wynagrodzenie<<" "<<std::endl;
-
-	//std::cout<<Imie<<" "<<Nazwisko<<" "<<Dataur<<" "<<Telefon<<" "<<IloscPodwladnych<<" "<<CzasPracy<<" "<<Wynagrodzenie<<std::endl;
 }

@@ -12,7 +12,8 @@ private:
 	unsigned short int CzasPracy;
 	std::vector<SprzedanySamochod> SprzedaneSamochody;
 public:
-	Manager(const std::string imie, const std::string nazwisko, const std::string telefon, const unsigned short int id, const unsigned short int czas, const unsigned int podwladni);
+	Manager(const std::string imie, const std::string nazwisko, const std::string telefon, const unsigned short int dzien,
+		const unsigned short int miesiac, const unsigned short int rok, const unsigned short int id, const unsigned short int czas, const unsigned int podwladni);
 	double NalezneWynagrodzenie();
 	void SprzedajSamochod(SprzedanySamochod &S);
 	friend std::ostream & operator <<(std::ostream &Strumien, const Manager &M);
