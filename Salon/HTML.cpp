@@ -47,9 +47,9 @@ void DrukujZestawienieDostepnychSamochodow(std::string &nazwa)
 					"<td>"<<nowy.BazaSamochodow[i].getModel()<<"</td>"
 					"<td>"<<nowy.BazaSamochodow[i].getNadwozie()<<"</td>"
 					"<td>"<<nowy.BazaSamochodow[i].getNaped()<<"</td>"
-					"<td>"<<nowy.BazaSamochodow[i].getMasaPojazdu()<<"</td>"
-					"<td>"<<nowy.BazaSamochodow[i].getMasaDopuszczalna()<<"</td>"
-					"<td>"<<nowy.BazaSamochodow[i].getCena()<<"</td>";
+					"<td>"<<std::setiosflags(std::ios_base::dec)<<nowy.BazaSamochodow[i].getMasaPojazdu()<<"</td>"
+					"<td>"<<std::setiosflags(std::ios_base::dec)<<nowy.BazaSamochodow[i].getMasaDopuszczalna()<<"</td>"
+					"<td>"<<std::setiosflags(std::ios_base::dec)<<nowy.BazaSamochodow[i].getCena()<<"</td>";
 					
 				Plik<<"</tr>\n\n";
 			}
@@ -186,7 +186,7 @@ void DrukujZestawieniePracownika(std::string &nazwa, unsigned short int id)
 				Plik<<"<tr>"
 					"<td>"<<((Pracownik&)*nowy.Personel[nowy.GetPos(id)]).SprzedaneSamochody[i].getMarka()<<"</td>"
 					"<td>"<<((Pracownik&)*nowy.Personel[nowy.GetPos(id)]).SprzedaneSamochody[i].getModel()<<"</td>"
-					"<td>"<<((Pracownik&)*nowy.Personel[nowy.GetPos(id)]).SprzedaneSamochody[i].getCena()<<"</td>"
+					"<td>"<<std::setiosflags(std::ios_base::dec)<<std::setprecision(0)<<((Pracownik&)*nowy.Personel[nowy.GetPos(id)]).SprzedaneSamochody[i].getCena()<<"</td>"
 					"<td>"<<((Pracownik&)*nowy.Personel[nowy.GetPos(id)]).SprzedaneSamochody[i].GetData()<<"</td>";
 					
 				Plik<<"</tr>\n\n";
@@ -199,7 +199,7 @@ void DrukujZestawieniePracownika(std::string &nazwa, unsigned short int id)
 				Plik<<"<tr>"
 					"<td>"<<((Manager&)*nowy.Personel[nowy.GetPos(id)]).SprzedaneSamochody[i].getMarka()<<"</td>"
 					"<td>"<<((Manager&)*nowy.Personel[nowy.GetPos(id)]).SprzedaneSamochody[i].getModel()<<"</td>"
-					"<td>"<<((Manager&)*nowy.Personel[nowy.GetPos(id)]).SprzedaneSamochody[i].getCena()<<"</td>"
+					"<td>"<<std::setiosflags(std::ios_base::dec)<<std::setprecision(0)<<((Manager&)*nowy.Personel[nowy.GetPos(id)]).SprzedaneSamochody[i].getCena()<<"</td>"
 					"<td>"<<((Manager&)*nowy.Personel[nowy.GetPos(id)]).SprzedaneSamochody[i].GetData()<<"</td>";
 					
 				Plik<<"</tr>\n\n";
@@ -267,7 +267,7 @@ void DrukujZestawienieMiesieczne(std::string &nazwa, unsigned short int rok, uns
 						Plik<<"<tr>"
 							"<td>"<<((Pracownik&)*nowy.Personel[i]).SprzedaneSamochody[j].getMarka()<<"</td>"
 							"<td>"<<((Pracownik&)*nowy.Personel[i]).SprzedaneSamochody[j].getModel()<<"</td>"
-							"<td>"<<((Pracownik&)*nowy.Personel[i]).SprzedaneSamochody[j].getCena()<<"</td>"
+							"<td>"<<std::setprecision(2)<<((Pracownik&)*nowy.Personel[i]).SprzedaneSamochody[j].getCena()<<"</td>"
 							"<td>"<<((Pracownik&)*nowy.Personel[i]).SprzedaneSamochody[j].GetData()<<"</td>"
 							"<td>"<<((Pracownik&)*nowy.Personel[i]).GetID()<<"</td>";
 							
@@ -284,7 +284,7 @@ void DrukujZestawienieMiesieczne(std::string &nazwa, unsigned short int rok, uns
 						Plik<<"<tr>"
 							"<td>"<<((Manager&)*nowy.Personel[i]).SprzedaneSamochody[j].getMarka()<<"</td>"
 							"<td>"<<((Manager&)*nowy.Personel[i]).SprzedaneSamochody[j].getModel()<<"</td>"
-							"<td>"<<((Manager&)*nowy.Personel[i]).SprzedaneSamochody[j].getCena()<<"</td>"
+							"<td>"<<std::setprecision(2)<<((Manager&)*nowy.Personel[i]).SprzedaneSamochody[j].getCena()<<"</td>"
 							"<td>"<<((Manager&)*nowy.Personel[i]).SprzedaneSamochody[j].GetData()<<"</td>"
 							"<td>"<<((Manager&)*nowy.Personel[i]).GetID()<<"</td>";
 							

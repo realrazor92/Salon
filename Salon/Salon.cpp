@@ -10,26 +10,26 @@ Salon::Salon(const std::string imie, const std::string nazwisko, const std::stri
 
 double Salon::BilansSalonu()
 {
-	Budzet = Przychody + Rozchody;
+	Budzet = Przychody - Rozchody;
 	std::cout << "----- Bilans Salonu -----" << "\n"
 		<< "Przychody salonu : " << std::setw(10) << Przychody << "\n"
 		<< "Rozchody salonu : " << std::setw(10) << Rozchody << "\n"
 		<< std::setw(28) << std::setfill('-') << "\n"
-		<< "Ogolny bilans: " << std::setw(10) << Budzet << "\n";
+		<< "Ogolny bilans: " <<std::setfill(' ') << std::setw(10) << Budzet << "\n";
 	return Budzet;
 }
 
 void Salon::WyplacWynagrodzenie()
 {
 
-	Rozchody -= PrezesSalonu.NalezneWynagrodzenie();
+	Rozchody += PrezesSalonu.NalezneWynagrodzenie();
 
 	for(int i = 0 ; i < Personel.size() ; ++i)
 	{
-		Rozchody -= Personel[i]->NalezneWynagrodzenie();
+		Rozchody += Personel[i]->NalezneWynagrodzenie();
 	}
 
-	Rozchody -= Czynsz;
+	Rozchody += Czynsz;
 }
 void Salon::SprzedajSamochod()
 {
@@ -49,14 +49,12 @@ void Salon::SprzedajSamochod()
 		if(wybor[i] >= 'a' && wybor[i] <= 'z')
 		{
 			throw BladWprowadzenia();
-			//this -> SprzedajSamochod();
 		}
 		else
 		{
 			if(atoi(wybor.c_str()) -1 > this->BazaSamochodow.size() -1)
 			{
 				throw BlednyIndeks();
-				//this -> SprzedajSamochod();
 			}
 			else
 			{
@@ -168,16 +166,16 @@ void Salon::ZapiszBazeSamochodow()
 void Salon::WyswietlBazeSamochodow()
 {
 	std::cout<<"---------------------Baza aktualnie dostêpnych samochodów---------------------\n\n";
-	std::cout<<"    Marka    "<<"|"<<"     Model    "<<"|"<<" Nadwozie "<<"|"<<" Napêd "<<"|"<<" Masa "<<"|"
+	std::cout<<"Lp"<<"|"<<"    Marka    "<<"|"<<"   Model   "<<"|"<<" Nadwozie "<<"|"<<"   Napêd  "<<"|"<<" Masa "<<"|"
 		<<"Masa dop"<<"|"<<"    Cena"<<std::endl;
 	std::cout<<"=============================================================================="<<std::endl;
 
 	for(int i=0; i<nowy.BazaSamochodow_Size();++i)
 	{
-		std::cout<<std::setw(2)<< i+1 << ". "<<std::setw(11)<<BazaSamochodow[i].getMarka()<<", "			//Marka
-			<<std::setw(13)<<BazaSamochodow[i].getModel()<<", "													//Model
+		std::cout<<std::setw(2)<< i+1 << ". "<<std::setw(12)<<BazaSamochodow[i].getMarka()<<", "			//Marka
+			<<std::setw(10)<<BazaSamochodow[i].getModel()<<", "													//Model
 			<<std::setw(9)<<BazaSamochodow[i].getNadwozie()<<", "												//Nadwozie
-			<<std::setw(6)<<BazaSamochodow[i].getNaped()<<", "													//Naped
+			<<std::setw(9)<<BazaSamochodow[i].getNaped()<<", "													//Naped
 			<<std::setw(5)<<std::fixed<<std::setprecision(0)<<BazaSamochodow[i].getMasaPojazdu()<<", "			//Masa
 			<<std::setw(7)<<std::fixed<<std::setprecision(0)<<BazaSamochodow[i].getMasaDopuszczalna()<<", "		//Masa dopuszczalna
 			<<std::setw(7)<<std::fixed<<std::setprecision(2)<<BazaSamochodow[i].getCena()<<" zl"<<std::endl;				//Cena

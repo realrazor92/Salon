@@ -62,8 +62,8 @@ std::ostream & operator <<(std::ostream &Strumien, const Samochod &S)
 		<<S.Nadwozie<<","											//Nadwozie
 		<<S.Naped<<","												//Naped
 		<<S.MasaPojazdu<<","										//Masa
-		<<S.MasaDopuszczalna<<","									//Masa dopuszczalna
-		<<S.Cena;													//Cena
+		<<std::setprecision(2)<<S.MasaDopuszczalna<<","									//Masa dopuszczalna
+		<<std::setprecision(2)<<S.Cena;													//Cena
 
 	return Strumien;
 }

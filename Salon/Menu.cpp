@@ -120,12 +120,14 @@ void Menu::Interfejs()
 							catch(BladWprowadzenia &Bw)
 							{
 								std::cout << "\n" << Bw.what() << "\n";
+								_getch();
 								system("cls");
 								break;
 							}
 							catch(BlednyIndeks &Bi)
 							{
 								std::cout << "\n" <<  Bi.what() << "\n";
+								_getch();
 								system("cls");
 								break;
 							}
@@ -138,6 +140,10 @@ void Menu::Interfejs()
 							std::string nazwa;
 							cin>>nazwa;
 							DrukujZestawienieDostepnychSamochodow(nazwa);
+							break;
+						}
+					case '0':
+						{
 							break;
 						}
 					default:
@@ -170,6 +176,10 @@ void Menu::Interfejs()
 								case '1':		//Bilans salonu
 									{
 										nowy.BilansSalonu();
+										break;
+									}
+								case '0':
+									{
 										break;
 									}
 								default:
@@ -268,6 +278,10 @@ void Menu::Interfejs()
 										}
 										break;
 									}
+								case '0':
+									{
+										break;
+									}
 								default:
 									{
 										std::cout<<"Blêdna opcja. Spróbuj jeszcze raz.\n";
@@ -297,7 +311,10 @@ void Menu::Interfejs()
 							nowy.ZapiszBazeSamochodow();
 							break;
 						}
-
+					case '0':
+						{
+							break;
+						}
 					default:
 						{
 							std::cout<<"Blêdna opcja. Spróbuj jeszcze raz.\n";
