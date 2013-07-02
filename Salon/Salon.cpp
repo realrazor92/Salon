@@ -51,7 +51,8 @@ void Salon::SprzedajSamochod()
 	}
 	else
 	{
-		this->Personel[LosowyPracownik]->SprzedajSamochod(SprzedanySamochod(this->BazaSamochodow[wybor-1],Data()));
+		this->Personel[LosowyPracownik]->SprzedajSamochod(SprzedanySamochod(this->BazaSamochodow[wybor - 1],Data()));
+		this->Przychody += (this->BazaSamochodow[wybor - 1].getCena() * 0,3);
 		this->BazaSamochodow.erase(this->BazaSamochodow.begin() + (wybor-1));
 		this->ZapiszBazeSamochodow();
 	}
