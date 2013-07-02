@@ -175,7 +175,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\BladWprowadzenia.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\BlednaWartosc.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\BlednyIndeks.cpp"
 				>
 			</File>
 			<File
@@ -237,7 +245,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\BladWprowadzenia.h"
+				>
+			</File>
+			<File
 				RelativePath=".\BlednaWartosc.h"
+				>
+			</File>
+			<File
+				RelativePath=".\BlednyIndeks.h"
 				>
 			</File>
 			<File
