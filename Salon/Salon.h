@@ -7,6 +7,8 @@
 #include "Pracownik.h"
 #include "Manager.h"
 #include "SprzedanySamochod.h"
+#include "BladWprowadzenia.h"
+#include "BlednyIndeks.h"
 
 class Salon
 {

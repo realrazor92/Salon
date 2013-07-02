@@ -1,9 +1,9 @@
 #include "Prezes.h"
 
 Prezes::Prezes(const std::string imie, const std::string nazwisko , const std::string telefon, const double wynagrodzenie, const unsigned short int czas)
-	:Osoba(imie , nazwisko , telefon), Wynagrodzenie(wynagrodzenie), CzasPracy(czas)
+	:Osoba(imie , nazwisko , telefon), CzasPracy(czas)
 {
-	if(wynagrodzenie < 0 || czas < 0)
+	if(czas < 0)
 	{
 		throw UjemnaWartosc();
 	}

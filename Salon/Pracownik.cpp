@@ -4,7 +4,12 @@ Pracownik::Pracownik(const std::string imie, const std::string nazwisko, const s
 					 const unsigned short int miesiac, const unsigned short int rok, const unsigned short int id, const unsigned short int czas
 					 /*, const unsigned int sprzedane*/)
 					 :Osoba(imie,nazwisko,telefon,dzien,miesiac,rok), ID(id), CzasPracy(czas)/*, SprzedaneSamochody(sprzedane)*/
-{}
+{
+		if(ID < 0 || czas < 0)
+	{
+		throw UjemnaWartosc();
+	}
+}
 
 double Pracownik::NalezneWynagrodzenie()
 {
