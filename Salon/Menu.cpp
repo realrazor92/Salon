@@ -28,7 +28,9 @@ const char Menu::Klient()
 	char k;
 	std::cout << "    MENU KLIENTA \n\n" 
 		"[1] Baza aktualnie dostêpnych samochodów\n"		
-		"[2] Zakup samochodu\n\n"
+		"[2] Zakup samochodu\n"
+		"[3] Drukuj bazê aktualnie dostêpnych samochodów\n\n"
+
 		"[0] Powrót do menu g³ównego\n"			
 		"\nWybierz: ";
 	std::cin >> k;
@@ -114,6 +116,14 @@ void Menu::Interfejs()
 							nowy.ZapiszBazeSprzedanych();
 							break;
 						}
+					case '3':
+						{
+							std::cout<< "Podaj docelow¹ nazwê pliku: ";
+							std::string nazwa;
+							cin>>nazwa;
+							DrukujZestawienieDostepnychSamochodow(nazwa);
+							break;
+						}
 					default:
 						{
 							std::cout<<"Blêdna opcja. Spróbuj jeszcze raz.\n";
@@ -161,6 +171,20 @@ void Menu::Interfejs()
 					case '2':		//Pracownicy
 						{
 							nowy.WyswietlPersonel();
+							std::cout<<std::endl<<"Czy chcesz wydrukowaæ zestawienie? (t/n)";
+							std::string odp;
+							std::cin>>odp;
+							if(odp=="t")
+							{
+								std::cout<< "Podaj docelow¹ nazwê pliku: ";
+								std::string nazwa;
+								cin>>nazwa;
+								DrukujZestawieniePersonelu(nazwa);
+							}
+							else
+							{
+								system("cls");
+							}
 							break;
 						}
 					case '3':		//Zestawienia sprzeda¿y
@@ -180,6 +204,21 @@ void Menu::Interfejs()
 										std::cout<<"Podaj miesi¹c: ";
 										std::cin>>Miesiac;
 										nowy.ZestawienieMiesieczne(Miesiac,Rok);
+										
+										std::cout << std::endl << "Czy chcesz wydrukowaæ zestawienie? (t/n)";
+										std::string odp;
+										std::cin >> odp;
+										if ( odp == "t" )
+										{
+											std::cout << "Podaj docelow¹ nazwê pliku: ";
+											std::string nazwa;
+											cin >> nazwa;
+											DrukujZestawienieMiesieczne(nazwa,Rok,Miesiac);
+										}
+										else
+										{
+											system("cls");
+										}
 										break;
 									}
 								case '2':		//Zestawienie ogólne
@@ -195,8 +234,22 @@ void Menu::Interfejs()
 										unsigned short int id;
 										std::cin>>id;
 										system("cls");
-
 										nowy.ZestawieniePracownika(id);
+
+										std::cout << std::endl << "Czy chcesz wydrukowaæ zestawienie? (t/n)";
+										std::string odp;
+										std::cin >> odp;
+										if ( odp == "t" )
+										{
+											std::cout << "Podaj docelow¹ nazwê pliku: ";
+											std::string nazwa;
+											cin >> nazwa;
+											DrukujZestawieniePracownika(nazwa,id);
+										}
+										else
+										{
+											system("cls");
+										}
 										break;
 									}
 								default:
