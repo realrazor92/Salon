@@ -112,8 +112,24 @@ void Menu::Interfejs()
 						}
 					case '2':		//Zakup samochodu
 						{
-							nowy.SprzedajSamochod();
-							nowy.ZapiszBazeSprzedanych();
+							try
+							{
+								nowy.SprzedajSamochod();
+								nowy.ZapiszBazeSamochodow();
+							}
+							catch(BladWprowadzenia &Bw)
+							{
+								std::cout << "\n" << Bw.what() << "\n";
+								system("cls");
+								break;
+							}
+							catch(BlednyIndeks &Bi)
+							{
+								std::cout << "\n" <<  Bi.what() << "\n";
+								system("cls");
+								break;
+							}
+
 							break;
 						}
 					case '3':

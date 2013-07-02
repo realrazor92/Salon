@@ -2,6 +2,8 @@
 #include "Biblioteki.h"
 #include "Salon.h"
 #include "HTML.h"
+#include "BladWprowadzenia.h"
+#include "BlednyIndeks.h"
 
 
 class Menu					
