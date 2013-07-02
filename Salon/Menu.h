@@ -1,10 +1,10 @@
 #pragma once
 #include "Biblioteki.h"
 #include "Salon.h"
+#include "HTML.h"
 
 
-class Menu					//G³ówna klasa tworz¹ca menu poprzez konstruktor. Puki co menu nie zawiera ¿adnych konkretów, 
-							//to trzeba ustaliæ.
+class Menu					
 {
 public:
 	Menu();

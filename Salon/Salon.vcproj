@@ -183,7 +183,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Klient.cpp"
+				RelativePath=".\HTML.cpp"
 				>
 			</File>
 			<File
@@ -245,7 +245,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Klient.h"
+				RelativePath=".\HTML.h"
 				>
 			</File>
 			<File

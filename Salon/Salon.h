@@ -22,7 +22,7 @@ private:
 
 public:
 	Salon(const std::string imie, const std::string nazwisko , const std::string telefon, const unsigned short int czas , const std::string nazwa , const double budzet , const double przychody , const double rozchody, const double czynsz);
-	void SprzedajSamochod(Samochod &S);
+	void SprzedajSamochod();
 	void ZatrudnijPracownika(const Pracownik &P); 
 	void WyplacWynagrodzenie(); 
 	double BilansSalonu(); 
@@ -36,10 +36,15 @@ public:
 	void WyswietlPersonel() const;
 	//------------------------------------//Sprzedane samochody
 	bool ZaladujBazeSprzedanych();
+	void ZapiszBazeSprzedanych();
 	short int GetPos(const unsigned short int id) const;
 	//------------------------------------//Zestawienia
 	void ZestawienieOgolne();
 	void ZestawieniePracownika(const unsigned short int ID);
 	void ZestawienieMiesieczne(const unsigned short int Miesiac, const unsigned short int Rok);
+	friend void DrukujZestawienieDostepnychSamochodow(std::string &nazwa);
+	friend void DrukujZestawieniePersonelu(std::string &nazwa);
+	friend void DrukujZestawieniePracownika(std::string &nazwa, unsigned short int id);
+	friend void DrukujZestawienieMiesieczne(std::string &nazwa, unsigned short int rok, unsigned short int miesiac);
 };
 

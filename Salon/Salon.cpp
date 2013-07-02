@@ -5,10 +5,8 @@ extern Salon nowy;
 Salon::Salon(const std::string imie, const std::string nazwisko, const std::string telefon, const unsigned short czas,
 			 const std::string nazwa, const double budzet, const double przychody, const double rozchody, const double czynsz)
 			 :PrezesSalonu(imie , nazwisko , telefon ,(przychody*0,1) , czas), NazwaMarki(nazwa) , Budzet(budzet) , Przychody(przychody) , Rozchody(rozchody) , Czynsz(czynsz)
-{
+{}
 
-}
-	
 
 double Salon::BilansSalonu()
 {
@@ -33,7 +31,7 @@ void Salon::WyplacWynagrodzenie()
 
 	Rozchody -= Czynsz;
 }
-void Salon::SprzedajSamochod(Samochod &S)
+void Salon::SprzedajSamochod()
 {
 	int min = 0;
 	int max = this->Personel.size();
@@ -49,11 +47,11 @@ void Salon::SprzedajSamochod(Samochod &S)
 	if(wybor - 1 > this->BazaSamochodow.size())
 	{
 		std::cout << "\n Numer spoza listy, sprobuj ponownie\n";
-		this->SprzedajSamochod(S);
+		this->SprzedajSamochod();
 	}
 	else
 	{
-		this->Personel[LosowyPracownik]->SprzedajSamochod(SprzedanySamochod(S,Data()));
+		this->Personel[LosowyPracownik]->SprzedajSamochod(SprzedanySamochod(this->BazaSamochodow[wybor-1],Data()));
 		this->BazaSamochodow.erase(this->BazaSamochodow.begin() + (wybor-1));
 		this->ZapiszBazeSamochodow();
 	}
@@ -164,13 +162,13 @@ void Salon::WyswietlBazeSamochodow()
 
 	for(int i=0; i<nowy.BazaSamochodow_Size();++i)
 	{
-			std::cout<<std::setw(2)<< i+1 << ". "<<std::setw(11)<<BazaSamochodow[i].getMarka()<<", "			//Marka
+		std::cout<<std::setw(2)<< i+1 << ". "<<std::setw(11)<<BazaSamochodow[i].getMarka()<<", "			//Marka
 			<<std::setw(13)<<BazaSamochodow[i].getModel()<<", "													//Model
 			<<std::setw(9)<<BazaSamochodow[i].getNadwozie()<<", "												//Nadwozie
 			<<std::setw(6)<<BazaSamochodow[i].getNaped()<<", "													//Naped
 			<<std::setw(5)<<std::fixed<<std::setprecision(0)<<BazaSamochodow[i].getMasaPojazdu()<<", "			//Masa
 			<<std::setw(7)<<std::fixed<<std::setprecision(0)<<BazaSamochodow[i].getMasaDopuszczalna()<<", "		//Masa dopuszczalna
-			<<std::setw(7)<<std::fixed<<std::setprecision(2)<<BazaSamochodow[i].getCena()<<" zl"<<std::endl;	//Cena
+			<<std::setw(7)<<std::fixed<<std::setprecision(2)<<BazaSamochodow[i].getCena()<<" zl"<<std::endl;				//Cena
 
 	}
 	std::cout<<std::endl;
@@ -229,17 +227,19 @@ bool Salon::ZaladujPersonel()
 					if(Stanowisko=="Manager")
 					{
 						//Czas pracy, Ilosc podwladnych, Wynagrodzenie(?)
-						std::string czas, podwladni, wynagrodzenie;
-						unsigned short int Czas, Podwladni;
-						double Wynagrodzenie;
-						getline(linestream,wynagrodzenie,',');
-						Wynagrodzenie = atof(wynagrodzenie.c_str());
+						std::string czas, podwladni, id;
+						unsigned short int Czas, Podwladni, ID;
+						getline(linestream,id,',');
+						ID = atoi(id.c_str());
 						getline(linestream,czas,',');
 						Czas = atoi(czas.c_str());
-						getline(linestream,podwladni,'\,');
+						getline(linestream,podwladni,'\n');
 						Podwladni = atoi(podwladni.c_str());
 
-						Personel.push_back(new Manager(Imie,Nazwisko,Telefon,Wynagrodzenie,Czas,Podwladni));
+
+
+						Personel.push_back(new Manager(Imie,Nazwisko,Telefon,Dzien,Miesiac,Rok,ID,Czas,Podwladni));
+						//Personel.push_back(new Manager(Imie,Nazwisko,Telefon,Wynagrodzenie,Czas,Podwladni));
 					}
 					//Stanowisko Prezesa -> Prezes Salonu (???)
 					//Klient ???
@@ -280,6 +280,13 @@ short int Salon::GetPos(const unsigned short int id) const
 		if(this->Personel[i]->getType() == typeid(Pracownik*).name())	//Czy Osoba jest pracownikiem
 		{
 			if(((Pracownik&)*this->Personel[i]).GetID()==id)
+			{
+				return i;
+			}
+		}
+		if(this->Personel[i]->getType() == typeid(Manager*).name())	//Czy Osoba jest managerem
+		{
+			if(((Manager&)*this->Personel[i]).GetID()==id)
 			{
 				return i;
 			}
@@ -367,12 +374,35 @@ bool Salon::ZaladujBazeSprzedanych()
 		return false;
 	}
 }
+void Salon::ZapiszBazeSprzedanych()
+{
+
+	std::ofstream Plik("sprzedane.csv");
+	for(unsigned short int i = 0 ; i<Personel.size() ; ++i)
+	{
+		if(this->Personel[i]->getType() == typeid(Pracownik*).name())
+		{
+			for(unsigned short int j = 0 ; j<((Pracownik&)*Personel[i]).SprzedaneSamochody_Size() ; ++j)
+			{
+				Plik << ((Pracownik&)*Personel[i]).GetID() << "," << ((SprzedanySamochod&)(((Pracownik&)*Personel[i])).getSprzedanySamochod(j));
+			}
+		}
+		if(this->Personel[i]->getType() == typeid(Manager*).name())
+		{
+			for(unsigned short int j = 0 ; j<((Manager&)*Personel[i]).SprzedaneSamochody_Size() ; ++j)
+			{
+				Plik << ((Manager&)*Personel[i]).GetID() << "," << ((SprzedanySamochod&)(((Manager&)*Personel[i])).getSprzedanySamochod(j));
+			}
+		}
+	}
+
+}
 //Zestawienia
 
 void Salon::ZestawienieOgolne()
 {
 	std::cout<<"----------------Zestawienie wszystkich sprzedanych samochodów-----------------\n\n";
-	std::cout<<"    Marka    "<<"|"<<"     Model    "<<"|"<<"    Cena    "<<"|"<<" Data sp  "<<"|"<<" ID sprzedawcy "<<"|"<<std::endl;
+	std::cout<<"    Marka    "<<"|"<<"     Model    "<<"|"<<"     Cena    "<<"|"<<" Data sp  "<<"|"<<" ID sprzedawcy "<<"|"<<std::endl;
 	std::cout<<"=============================================================================="<<std::endl;
 
 	for(unsigned short int i=0; i<this->Personel.size(); ++i)
@@ -408,9 +438,19 @@ void Salon::ZestawieniePracownika(const unsigned short int ID)
 
 		std::cout<<"    Marka    "<<"|"<<"     Model    "<<"|"<<"    Cena    "<<"|"<<" Data sp  "<<"|"<<" ID sprzedawcy "<<"|"<<std::endl;
 		std::cout<<"=============================================================================="<<std::endl;
-		for(unsigned short int j=0; j<((Pracownik&)*Personel[this->GetPos(ID)]).SprzedaneSamochody_Size(); ++j)
+		if(this->Personel[this->GetPos(ID)]->getType() == typeid(Pracownik*).name())
 		{
-			((Pracownik&)*Personel[this->GetPos(ID)]).getSprzedanySamochod(j).Wyswietl(ID);
+			for(unsigned short int j=0; j<((Pracownik&)*Personel[this->GetPos(ID)]).SprzedaneSamochody_Size(); ++j)
+			{
+					((Pracownik&)*Personel[this->GetPos(ID)]).getSprzedanySamochod(j).Wyswietl(ID);
+			}
+		}
+		if(this->Personel[this->GetPos(ID)]->getType() == typeid(Manager*).name())
+		{
+			for(unsigned short int j=0; j<((Manager&)*Personel[this->GetPos(ID)]).SprzedaneSamochody_Size(); ++j)
+			{
+					((Manager&)*Personel[this->GetPos(ID)]).getSprzedanySamochod(j).Wyswietl(ID);
+			}
 		}
 		std::cout<<std::endl;
 	}

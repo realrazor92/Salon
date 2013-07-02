@@ -33,7 +33,7 @@ std::ostream & operator <<(std::ostream &Strumien, const Rodzaj &R)
 {
 	if(R==Przód) Strumien<<"Przód";
 	if(R==Sedan) Strumien<<"Ty³";
-	if(R==Obie_osie) Strumien<<"4x4";	//Obie_osie
+	if(R==Obie_osie) Strumien<<"Obie_osie";	//Obie_osie
 	return Strumien;
 }
 
