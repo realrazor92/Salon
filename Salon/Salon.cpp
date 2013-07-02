@@ -35,7 +35,7 @@ void Salon::SprzedajSamochod()
 {
 	int min = 0;
 	int max = this->Personel.size();
-	int wybor = 0;
+	std::string wybor;
 	srand(time(NULL));
 
 	int LosowyPracownik = rand()%(max-min+1)+min;
@@ -44,16 +44,28 @@ void Salon::SprzedajSamochod()
 
 	std::cout << "Zakup samochod nr ";
 	std::cin >> wybor;
-	if(wybor - 1 > this->BazaSamochodow.size())
+	for(int i = 0 ; i < wybor.size() ; ++i)
 	{
-		std::cout << "\n Numer spoza listy, sprobuj ponownie\n";
-		this->SprzedajSamochod();
-	}
-	else
-	{
-		this->Personel[LosowyPracownik]->SprzedajSamochod(SprzedanySamochod(this->BazaSamochodow[wybor-1],Data()));
-		this->BazaSamochodow.erase(this->BazaSamochodow.begin() + (wybor-1));
-		this->ZapiszBazeSamochodow();
+		if(wybor[i] >= 'a' && wybor[i] <= 'z')
+		{
+			throw BladWprowadzenia();
+			//this -> SprzedajSamochod();
+		}
+		else
+		{
+			if(atoi(wybor.c_str()) -1 > this->BazaSamochodow.size() -1)
+			{
+				throw BlednyIndeks();
+				//this -> SprzedajSamochod();
+			}
+			else
+			{
+				this -> Personel[LosowyPracownik] -> SprzedajSamochod(SprzedanySamochod(this -> BazaSamochodow[atoi(wybor.c_str()) - 1] , Data()));
+				this -> Przychody += (this -> BazaSamochodow[atoi(wybor.c_str()) - 1].getCena() * 0,3);
+				this -> BazaSamochodow.erase(this -> BazaSamochodow.begin() + (atoi(wybor.c_str()) - 1));
+				this -> ZapiszBazeSamochodow();
+			}
+		}
 	}
 }
 
@@ -442,14 +454,14 @@ void Salon::ZestawieniePracownika(const unsigned short int ID)
 		{
 			for(unsigned short int j=0; j<((Pracownik&)*Personel[this->GetPos(ID)]).SprzedaneSamochody_Size(); ++j)
 			{
-					((Pracownik&)*Personel[this->GetPos(ID)]).getSprzedanySamochod(j).Wyswietl(ID);
+				((Pracownik&)*Personel[this->GetPos(ID)]).getSprzedanySamochod(j).Wyswietl(ID);
 			}
 		}
 		if(this->Personel[this->GetPos(ID)]->getType() == typeid(Manager*).name())
 		{
 			for(unsigned short int j=0; j<((Manager&)*Personel[this->GetPos(ID)]).SprzedaneSamochody_Size(); ++j)
 			{
-					((Manager&)*Personel[this->GetPos(ID)]).getSprzedanySamochod(j).Wyswietl(ID);
+				((Manager&)*Personel[this->GetPos(ID)]).getSprzedanySamochod(j).Wyswietl(ID);
 			}
 		}
 		std::cout<<std::endl;
